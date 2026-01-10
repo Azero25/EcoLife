@@ -27,7 +27,7 @@ namespace EcoLife.Model.Context
 
             try
             {
-                string dbPath = @"F:\belajar_csub\pemrog_lan\EcoLife\Database";
+                string dbPath = @"F:\belajar_csub\pemrog_lan\Final\EcoLife\Database";
                 string dbName = Path.Combine(dbPath, "DbEcoLife.db");
 
                 if (!Directory.Exists(dbPath))
