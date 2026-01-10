@@ -79,6 +79,16 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Context\DbContext.cs" />
+    <Compile Include="Model\Entity\Badge.cs" />
+    <Compile Include="Model\Entity\Challenge.cs" />
+    <Compile Include="Model\Entity\History.cs" />
+    <Compile Include="Model\Entity\Leaderboard.cs" />
+    <Compile Include="Model\Entity\User.cs" />
+    <Compile Include="Model\Repository\BadgeRepository.cs" />
+    <Compile Include="Model\Repository\ChallangeRepository.cs" />
+    <Compile Include="Model\Repository\HistoryRepository.cs" />
+    <Compile Include="Model\Repository\LeaderboardRepository.cs" />
+    <Compile Include="Model\Repository\UserRepository.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -106,8 +116,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controller\" />
-    <Folder Include="Model\Entity\" />
-    <Folder Include="Model\Repository\" />
     <Folder Include="Storage\" />
     <Folder Include="Views\" />
   </ItemGroup>
