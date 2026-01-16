@@ -42,7 +42,7 @@ namespace EcoLife.Model.Repository
 
                 using (SQLiteCommand cmd = new SQLiteCommand(sql, _conn))
                 {
-                    cmd.Parameters.AddWithValue("@idUser", user.Id_User);
+                    cmd.Parameters.AddWithValue("@idUser", user.IdUser);
 
                     using (SQLiteDataReader dtr = cmd.ExecuteReader())
                     {
@@ -82,7 +82,7 @@ namespace EcoLife.Model.Repository
 
             using (SQLiteCommand cmd = new SQLiteCommand(sql, _conn))
             {
-                cmd.Parameters.AddWithValue("@idUser", user.Id_User);
+                cmd.Parameters.AddWithValue("@idUser", user.IdUser);
                 cmd.Parameters.AddWithValue("@idChallenge", challenge.IdChallenge);
 
                 try

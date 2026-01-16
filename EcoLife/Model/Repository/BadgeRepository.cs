@@ -21,7 +21,7 @@ namespace EcoLife.Model.Repository
 
         private bool EnsureAdmin(User user)
         {
-            if (user.Role == "admin")
+            if (user != null && user.Role == "admin")
             {
                 return true;
             }
@@ -31,46 +31,39 @@ namespace EcoLife.Model.Repository
             }
         }
 
-        public List<Badge> GetAllBadge(User admin)
+        public List<Badge> GetAllBadge()
         {
-            if (EnsureAdmin(admin) == true)
+            List<Badge> listBadge = new List<Badge>();
+
+            try
             {
-
-                List<Badge> listBadge = new List<Badge>();
-
-                try
-                {
-                    // declare sql command
-                    string sql = @"SELECT name_badge, file_path, created_at 
+                // declare sql command
+                string sql = @"SELECT id_badge, name_badge, file_path, created_at 
                                FROM badge ORDER by name_badge";
 
-                    using (SQLiteCommand cmd = new SQLiteCommand(sql, _conn))
+                using (SQLiteCommand cmd = new SQLiteCommand(sql, _conn))
+                {
+                    using (SQLiteDataReader dtr = cmd.ExecuteReader())
                     {
-                        using (SQLiteDataReader dtr = cmd.ExecuteReader())
+                        while (dtr.Read())
                         {
-                            while (dtr.Read())
-                            {
-                                Badge badge = new Badge();
-                                badge.Name_Badge = dtr["name_badge"].ToString();
-                                badge.File_Path = dtr["file_path"].ToString();
-                                badge.CreatedAt = dtr.GetDateTime(3);
+                            Badge badge = new Badge();
+                            badge.IdBadge = Convert.ToInt32(dtr["id_badge"]);
+                            badge.NameBadge = dtr["name_badge"].ToString();
+                            badge.FilePath = dtr["file_path"].ToString();
+                            badge.CreatedAt = Convert.ToDateTime(dtr["created_at"]);
 
-                                listBadge.Add(badge);
-                            }
+                            listBadge.Add(badge);
                         }
                     }
                 }
-                catch (Exception ex)
-                {
-                    System.Diagnostics.Debug.Print("ReadAll error: {0}", ex.Message);
-                }
-
-                return listBadge;
             }
-            else
+            catch (Exception ex)
             {
-                return null;
+                System.Diagnostics.Debug.Print("ReadAll error: {0}", ex.Message);
             }
+
+            return listBadge;
         }
 
         public List<Badge> ReadByNamaBadge(string nama)
@@ -80,9 +73,10 @@ namespace EcoLife.Model.Repository
             try
             {
                 // declare sql command
-                string sql = @"SELECT name_badge, file_path, created_at
-                               WHERE name_challenge LIKE @nama
-                               FROM badge ORDER by name_challenge";
+                string sql = @"SELECT id_badge, name_badge, file_path, created_at
+                               FROM badge
+                               WHERE name_badge LIKE @nama
+                               ORDER by name_badge";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(sql, _conn))
                 {
@@ -93,9 +87,10 @@ namespace EcoLife.Model.Repository
                         while (dtr.Read())
                         {
                             Badge badge = new Badge();
-                            badge.Name_Badge = dtr["name_badge"].ToString();
-                            badge.File_Path = dtr["file_path"].ToString();
-                            badge.CreatedAt = dtr.GetDateTime(3);
+                            badge.IdBadge = Convert.ToInt32(dtr["id_badge"]);
+                            badge.NameBadge = dtr["name_badge"].ToString();
+                            badge.FilePath = dtr["file_path"].ToString();
+                            badge.CreatedAt = Convert.ToDateTime(dtr["created_at"]);
 
                             listBadge.Add(badge);
                         }
@@ -119,8 +114,8 @@ namespace EcoLife.Model.Repository
 
                 using (SQLiteCommand cmd = new SQLiteCommand(sql, _conn))
                 {
-                    cmd.Parameters.AddWithValue("@name_badge", badge.Name_Badge);
-                    cmd.Parameters.AddWithValue("@file_path", badge.File_Path);
+                    cmd.Parameters.AddWithValue("@name_badge", badge.NameBadge);
+                    cmd.Parameters.AddWithValue("@file_path", badge.FilePath);
 
                     try
                     {
@@ -143,9 +138,9 @@ namespace EcoLife.Model.Repository
 
                 using (SQLiteCommand cmd = new SQLiteCommand(sql, _conn))
                 {
-                    cmd.Parameters.AddWithValue("@name_badge", badge.Name_Badge);
-                    cmd.Parameters.AddWithValue("@file_path", badge.File_Path);
-                    cmd.Parameters.AddWithValue("@id_badge", badge.Id_Badge);
+                    cmd.Parameters.AddWithValue("@name_badge", badge.NameBadge);
+                    cmd.Parameters.AddWithValue("@file_path", badge.FilePath);
+                    cmd.Parameters.AddWithValue("@id_badge", badge.IdBadge);
 
                     try
                     {
@@ -159,7 +154,7 @@ namespace EcoLife.Model.Repository
             }
         }
 
-        public void DeleteBadge(Badge badge, User admin)
+        public void DeleteBadge(int IdBadge, User admin)
         {
             if (EnsureAdmin(admin) == true)
             {
@@ -168,7 +163,7 @@ namespace EcoLife.Model.Repository
 
                 using (SQLiteCommand cmd = new SQLiteCommand(sql, _conn))
                 {
-                    cmd.Parameters.AddWithValue("@id_badge", badge.Id_Badge);
+                    cmd.Parameters.AddWithValue("@id_badge", IdBadge);
 
                     try
                     {

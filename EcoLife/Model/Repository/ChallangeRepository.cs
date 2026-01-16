@@ -21,7 +21,7 @@ namespace EcoLife.Model.Repository
 
         private bool EnsureAdmin(User user)
         {
-            if (user.Role == "admin")
+            if (user != null && user.Role == "admin")
             {
                 return true;
             }
@@ -76,8 +76,9 @@ namespace EcoLife.Model.Repository
             {
                 // declare sql command
                 string sql = @"SELECT name_challenge, desc_challenge, point_challenge, created_at
-                               WHERE name_challenge LIKE @nama
-                               FROM badge ORDER by name_challenge";
+                             FROM challenge
+                             WHERE name_challenge LIKE @nama
+                             ORDER BY name_challenge";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(sql, _conn))
                 {
@@ -90,8 +91,8 @@ namespace EcoLife.Model.Repository
                             Challenge challenge = new Challenge();
                             challenge.NameChallenge = dtr["name_challenge"].ToString();
                             challenge.DecsChallenge = dtr["desc_challenge"].ToString();
-                            challenge.PointChallenge = dtr.GetInt32(3);
-                            challenge.CreatedAt = dtr.GetDateTime(4);
+                            challenge.PointChallenge = Convert.ToInt32(dtr["point_challenge"]);
+                            challenge.CreatedAt = Convert.ToDateTime(dtr["created_at"]);
 
                             listChallenge.Add(challenge);
                         }
@@ -157,16 +158,16 @@ namespace EcoLife.Model.Repository
             }
         }
 
-        public void DeleteChallenge(Challenge challenge, User admin)
+        public void DeleteChallenge(int IdChallenge, User admin)
         {
             if (EnsureAdmin(admin) == true)
             {
                 string sql = @"DELETE FROM challenge
-                             where id_badge=@id_challenge";
+                   WHERE id_challenge = @id_challenge";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(sql, _conn))
                 {
-                    cmd.Parameters.AddWithValue("@id_challenge", challenge.IdChallenge);
+                    cmd.Parameters.AddWithValue("@id_challenge", IdChallenge);
 
                     try
                     {

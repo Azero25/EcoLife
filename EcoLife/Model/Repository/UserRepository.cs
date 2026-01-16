@@ -69,7 +69,7 @@ namespace EcoLife.Model.Repository
 
                     return new User
                     {
-                        Id_User = Convert.ToInt32(reader["id_user"]),
+                        IdUser = Convert.ToInt32(reader["id_user"]),
                         Name = reader["name"].ToString(),
                         Email = reader["email"].ToString(),
                         Role = reader["role"].ToString(),
@@ -92,7 +92,7 @@ namespace EcoLife.Model.Repository
                     {
                         users.Add(new User
                         {
-                            Id_User = Convert.ToInt32(rdr["id_user"]),
+                            IdUser = Convert.ToInt32(rdr["id_user"]),
                             Name = rdr["name"].ToString(),
                             Email = rdr["email"].ToString(),
                             Role = rdr["role"].ToString(),
@@ -104,52 +104,115 @@ namespace EcoLife.Model.Repository
             return users;
         }
 
-        // Get data user by name
-        public User GetUserByName(string name)
+        // Get data user by id
+        public User GetUserById(int id)
         {
-            string sql = @"SELECT id_user, name, email, role, created_at
-                           FROM users WHERE name = @name";
+            User user = null;
+            string sql = "SELECT * FROM users WHERE id_user = @id";
 
             using (SQLiteCommand cmd = new SQLiteCommand(sql, _conn))
             {
-                cmd.Parameters.AddWithValue("@name", name);
-
+                cmd.Parameters.AddWithValue("@id", id);
                 using (SQLiteDataReader reader = cmd.ExecuteReader())
                 {
-                    if (!reader.Read()) return null;
-
-                    return new User
+                    if (reader.Read())
                     {
-                        Id_User = Convert.ToInt32(reader["id_user"]),
-                        Name = reader["name"].ToString(),
-                        Email = reader["email"].ToString(),
-                        Role = reader["role"].ToString(),
-                        CreatedAt = Convert.ToDateTime(reader["created_at"])
-                    };
+                        user = new User
+                        {
+                            IdUser = Convert.ToInt32(reader["id_user"]),
+                            Name = reader["name"].ToString(),
+                            Email = reader["email"].ToString(),
+                            Password = reader["password"].ToString(),
+                            Role = reader["role"].ToString()
+                        };
+                    }
                 }
             }
+            return user;
         }
+
+        // Get data user by name
+        public List<User> GetUserByName(string name)
+        {
+            List<User> users = null;
+            string sql = "SELECT * FROM users WHERE name LIKE @name";
+            using (SQLiteCommand cmd = new SQLiteCommand(sql, _conn))
+            {
+                cmd.Parameters.AddWithValue("@name", "%" + name + "%");
+                using (SQLiteDataReader reader = cmd.ExecuteReader())
+                {
+                    users = new List<User>();
+                    while (reader.Read())
+                    {
+                        users.Add(new User
+                        {
+                            IdUser = Convert.ToInt32(reader["id_user"]),
+                            Name = reader["name"].ToString(),
+                            Email = reader["email"].ToString(),
+                            Password = reader["password"].ToString(),
+                            Role = reader["role"].ToString()
+                        });
+                    }
+                }
+            }
+
+            return users;
+        }
+
+        // Get password by id
+        public string GetPasswordById(int id)
+        {
+            string password = null;
+            string sql = "SELECT password FROM users WHERE id_user = @id";
+            using (SQLiteCommand cmd = new SQLiteCommand(sql, _conn))
+            {
+                cmd.Parameters.AddWithValue("@id", id);
+                using (SQLiteDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        password = reader["password"].ToString();
+                    }
+                }
+            }
+            return password;
+        }
+
 
         // Updating user
         public int UpdateUser(User user)
         {
-            string sql = @"UPDATE users 
-                           SET name = @name,
-                               email = @email,
-                               password = @password,
-                               role = @role
-                           WHERE id_user = @id";
+            if (user.IdUser <= 0)
+                throw new Exception("ID user tidak valid.");
+
+            int result;
+            // Gunakan logika SQL dinamis agar tidak menimpa password jika kosong
+            bool updatePassword = !string.IsNullOrWhiteSpace(user.Password);
+
+            string sql = $@"UPDATE users 
+                    SET name = @name, 
+                        email = @email,
+                        role = @role
+                        {(updatePassword ? ", password = @password" : "")}
+                    WHERE id_user = @id";
 
             using (SQLiteCommand cmd = new SQLiteCommand(sql, _conn))
             {
                 cmd.Parameters.AddWithValue("@name", user.Name);
                 cmd.Parameters.AddWithValue("@email", user.Email);
-                cmd.Parameters.AddWithValue("@password", user.Password);
                 cmd.Parameters.AddWithValue("@role", user.Role);
-                cmd.Parameters.AddWithValue("@id", user.Id_User);
+                cmd.Parameters.AddWithValue("@id", user.IdUser);
 
-                return cmd.ExecuteNonQuery();
+                if (updatePassword)
+                    cmd.Parameters.AddWithValue("@password", user.Password);
+
+                result = cmd.ExecuteNonQuery();
             }
+
+            if (result == 0)
+                throw new Exception("UPDATE gagal — data tidak ditemukan");
+
+            return result;
         }
 
         // Deleting user
@@ -159,7 +222,7 @@ namespace EcoLife.Model.Repository
 
             using (SQLiteCommand cmd = new SQLiteCommand(sql, _conn))
             {
-                cmd.Parameters.AddWithValue("@id", user.Id_User);
+                cmd.Parameters.AddWithValue("@id", user.IdUser);
 
                 try
                 {
