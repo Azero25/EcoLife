@@ -27,7 +27,8 @@ namespace EcoLife.Model.Context
 
             try
             {
-                string dbPath = @"F:\belajar_csub\pemrog_lan\Final\EcoLife\Database";
+                string projectDir = Path.GetFullPath(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, @"..\..\..\"));
+                string dbPath = Path.Combine(projectDir, "Database");
                 string dbName = Path.Combine(dbPath, "DbEcoLife.db");
 
                 if (!Directory.Exists(dbPath))
