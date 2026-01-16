@@ -8,9 +8,9 @@ namespace EcoLife.Model.Entity
 {
     public class Badge
     {
-        public int Id_Badge { get; set; }
-        public string Name_Badge { get; set; }
-        public string File_Path { get; set; }
+        public int IdBadge { get; set; }
+        public string NameBadge { get; set; }
+        public string FilePath { get; set; }
         public DateTime CreatedAt { get; set; }
     }
 }
