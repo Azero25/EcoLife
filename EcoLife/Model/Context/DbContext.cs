@@ -40,10 +40,8 @@ namespace EcoLife.Model.Context
                 conn = new SQLiteConnection(connectionString);
                 conn.Open();
 
-                // Create tables if database is new
                 CreateTables(conn);
-
-                // Insert user admin if not exists
+                MigrateDatabase(conn);
                 InsertAdminUserIfNotExists(conn);
             }
             catch (Exception ex)
@@ -59,65 +57,116 @@ namespace EcoLife.Model.Context
         {
             using (SQLiteCommand cmd = new SQLiteCommand(conn))
             {
-                // Table user
+                // Table user - UPDATED dengan total_score dan username
                 cmd.CommandText = @"
-                    CREATE TABLE IF NOT EXISTS users (
-                    id_user INTEGER PRIMARY KEY AUTOINCREMENT,
-                    name TEXT NOT NULL,
-                    email TEXT UNIQUE NOT NULL,
-                    password TEXT NOT NULL,
-                    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-                    role TEXT CHECK(role IN('admin', 'user')) NOT NULL
-                ); ";
+            CREATE TABLE IF NOT EXISTS users (
+            id_user INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            username TEXT NULL,
+            email TEXT UNIQUE NOT NULL,
+            password TEXT NOT NULL,
+            total_score INTEGER DEFAULT 0,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+            role TEXT CHECK(role IN('admin', 'user')) NOT NULL
+        ); ";
                 cmd.ExecuteNonQuery();
 
                 // Table badge
                 cmd.CommandText = @"
-                    CREATE TABLE IF NOT EXISTS badge (
-                    id_badge INTEGER PRIMARY KEY AUTOINCREMENT,
-                    name_badge TEXT NOT NULL,
-                    file_path TEXT NOT NULL,
-                    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-                ); ";
+            CREATE TABLE IF NOT EXISTS badge (
+            id_badge INTEGER PRIMARY KEY AUTOINCREMENT,
+            name_badge TEXT NOT NULL,
+            file_path TEXT NOT NULL,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+        ); ";
                 cmd.ExecuteNonQuery();
 
                 // Table challenge
                 cmd.CommandText = @"
-                    CREATE TABLE IF NOT EXISTS challenge (
-                    id_challenge INTEGER PRIMARY KEY AUTOINCREMENT,
-                    name_challenge TEXT NOT NULL,
-                    desc_challenge TEXT NULL,
-                    point_challenge INTEGER NOT NULL,
-                    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
-                ); ";
+            CREATE TABLE IF NOT EXISTS challenge (
+            id_challenge INTEGER PRIMARY KEY AUTOINCREMENT,
+            name_challenge TEXT NOT NULL,
+            desc_challenge TEXT NULL,
+            point_challenge INTEGER NOT NULL,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+        ); ";
                 cmd.ExecuteNonQuery();
 
                 // Table history
                 cmd.CommandText = @"
-                    CREATE TABLE IF NOT EXISTS history (
-                    id_history INTEGER PRIMARY KEY AUTOINCREMENT,
-                    id_user INTEGER NOT NULL,
-                    id_challenge INTEGER NOT NULL,
-                    name_history TEXT NOT NULL,
-                    desc_history TEXT NULL,
-                    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-                    FOREIGN KEY (id_user) REFERENCES users(id_user) ON DELETE CASCADE ON UPDATE CASCADE,
-                    FOREIGN KEY (id_challenge) REFERENCES challenge(id_challenge) ON DELETE CASCADE ON UPDATE CASCADE
-                ); ";
+            CREATE TABLE IF NOT EXISTS history (
+            id_history INTEGER PRIMARY KEY AUTOINCREMENT,
+            id_user INTEGER NOT NULL,
+            id_challenge INTEGER NOT NULL,
+            name_history TEXT NOT NULL,
+            desc_history TEXT NULL,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (id_user) REFERENCES users(id_user) ON DELETE CASCADE ON UPDATE CASCADE,
+            FOREIGN KEY (id_challenge) REFERENCES challenge(id_challenge) ON DELETE CASCADE ON UPDATE CASCADE
+        ); ";
                 cmd.ExecuteNonQuery();
 
                 // Table leaderboard
                 cmd.CommandText = @"
-                    CREATE TABLE IF NOT EXISTS leaderboard (
-                    id_leaderboard INTEGER PRIMARY KEY AUTOINCREMENT,
-                    id_user INTEGER NOT NULL,
-                    point INTEGER NOT NULL,
-                    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-                    FOREIGN KEY (id_user) REFERENCES users(id_user) ON DELETE CASCADE ON UPDATE CASCADE
-                ); ";
+            CREATE TABLE IF NOT EXISTS leaderboard (
+            id_leaderboard INTEGER PRIMARY KEY AUTOINCREMENT,
+            id_user INTEGER NOT NULL,
+            point INTEGER NOT NULL,
+            created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (id_user) REFERENCES users(id_user) ON DELETE CASCADE ON UPDATE CASCADE
+        ); ";
                 cmd.ExecuteNonQuery();
             }
         }
+        private void MigrateDatabase(SQLiteConnection conn)
+        {
+            try
+            {
+                string checkColumn = "PRAGMA table_info(users)";
+                bool hasTotalScore = false;
+                bool hasUsername = false;
+
+                using (SQLiteCommand cmd = new SQLiteCommand(checkColumn, conn))
+                using (SQLiteDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string columnName = reader["name"].ToString();
+                        if (columnName == "total_score") hasTotalScore = true;
+                        if (columnName == "username") hasUsername = true;
+                    }
+                }
+
+             
+                if (!hasTotalScore)
+                {
+                    string addScoreColumn = "ALTER TABLE users ADD COLUMN total_score INTEGER DEFAULT 0";
+                    using (SQLiteCommand cmd = new SQLiteCommand(addScoreColumn, conn))
+                    {
+                        cmd.ExecuteNonQuery();
+                        System.Diagnostics.Debug.WriteLine("Kolom total_score berhasil ditambahkan!");
+                    }
+                }
+
+    
+                if (!hasUsername)
+                {
+                    string addUsernameColumn = "ALTER TABLE users ADD COLUMN username TEXT NULL";
+                    using (SQLiteCommand cmd = new SQLiteCommand(addUsernameColumn, conn))
+                    {
+                        cmd.ExecuteNonQuery();
+                        System.Diagnostics.Debug.WriteLine("Kolom username berhasil ditambahkan!");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Migration error: {ex.Message}");
+            }
+        }
+
+
+
 
         private void InsertAdminUserIfNotExists(SQLiteConnection conn)
         {
@@ -127,7 +176,7 @@ namespace EcoLife.Model.Context
                 long count = (long)cmd.ExecuteScalar();
                 if (count == 0)
                 {
-                    // Insert admin karena belum ada
+           
                     string insertAdmin = @"INSERT INTO users (name, email, password, role) 
                                    VALUES (@name, @email, @password, @role)";
                     using (SQLiteCommand insertCmd = new SQLiteCommand(insertAdmin, conn))
@@ -142,7 +191,13 @@ namespace EcoLife.Model.Context
             }
         }
 
-        // Function / Method to delete database object from memory when not use
+
+
+
+
+
+
+       
         public void Dispose()
         {
             if (_conn != null)

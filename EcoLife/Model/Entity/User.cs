@@ -18,5 +18,7 @@ namespace EcoLife.Model.Entity
         // Relasi
         public ICollection<History> Histories { get; set; }
         public ICollection<Leaderboard> Leaderboards { get; set; }
+        public int TotalScore { get; internal set; }
+        public string Username { get; internal set; }
     }
 }

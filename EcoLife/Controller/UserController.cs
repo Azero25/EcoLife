@@ -174,5 +174,46 @@ namespace EcoLife.Controller
             CurrentUser = null;
             Application.Restart();
         }
+
+        public int GetUserScore(int idUser)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool UpdateUserScore(int userId, int newScore)
+        {
+            if (userId <= 0)
+            {
+                MessageBox.Show("User ID tidak valid!", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            try
+            {
+                using (DbContext context = new DbContext())
+                {
+                    _userRepo = new UserRepository(context);
+                    int result = _userRepo.UpdateUserScore(userId, newScore);
+
+                    if (result > 0)
+                    {
+                        
+                        if (CurrentUser != null && CurrentUser.IdUser == userId)
+                        {
+                            CurrentUser.TotalScore = newScore;
+                        }
+                        return true;
+                    }
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Gagal mengupdate score: " + ex.Message, "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+        }
     }
 }

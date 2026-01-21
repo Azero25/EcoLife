@@ -234,5 +234,33 @@ namespace EcoLife.Model.Repository
                 }
             }
         }
+
+        
+
+        public int UpdateUserScore(int userId, int newScore)
+        {
+            try
+            {
+                string sql = "UPDATE users SET total_score = @total_score WHERE id_user = @id_user";
+
+                using (SQLiteCommand cmd = new SQLiteCommand(sql, _conn))
+                {
+                    cmd.Parameters.AddWithValue("@total_score", newScore);
+                    cmd.Parameters.AddWithValue("@id_user", userId);
+
+                    int result = cmd.ExecuteNonQuery();
+
+                    System.Diagnostics.Debug.WriteLine($"Update score: userId={userId}, newScore={newScore}, rows affected={result}");
+
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Print("UpdateUserScore error: {0}", ex.Message);
+                throw new Exception("Gagal mengupdate skor user", ex);
+            }
+        }
+
     }
 }
