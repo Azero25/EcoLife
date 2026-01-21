@@ -14,7 +14,7 @@ namespace EcoLife.Model.Repository
         // declare private object connection
         private SQLiteConnection _conn;
 
-        // constructor
+        private SQLiteConnection _conn;
         public HistoryRepository(DbContext context)
         {
             _conn = context.Conn;
