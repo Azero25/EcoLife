@@ -107,6 +107,44 @@ namespace EcoLife.Model.Repository
             return listChallenge;
         }
 
+        public List<Challenge> ReadByTimeDateChallenge(DateTime dateTime)
+        {
+            List<Challenge> challenges = new List<Challenge>();
+
+            try             {
+                string sql = @"SELECT id_challenge, name_challenge, desc_challenge,
+                              point_challenge, created_at
+                       FROM challenge
+                       WHERE DATE(created_at) = DATE(@dateTime)
+                       ORDER BY name_challenge";
+                using (SQLiteCommand cmd = new SQLiteCommand(sql, _conn))
+                {
+                    cmd.Parameters.AddWithValue("@dateTime", dateTime);
+                    using (SQLiteDataReader dtr = cmd.ExecuteReader())
+                    {
+                        while (dtr.Read())
+                        {
+                            Challenge challenge = new Challenge
+                            {
+                                IdChallenge = Convert.ToInt32(dtr["id_challenge"]),
+                                NameChallenge = dtr["name_challenge"].ToString(),
+                                DecsChallenge = dtr["desc_challenge"].ToString(),
+                                PointChallenge = Convert.ToInt32(dtr["point_challenge"]),
+                                CreatedAt = Convert.ToDateTime(dtr["created_at"])
+                            };
+                            challenges.Add(challenge);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.Print("ReadByTime error: {0}", ex.Message);
+            }
+
+            return challenges;
+        }
+
         public void CreateChallenge(Challenge challenge, User admin)
         {
             if (EnsureAdmin(admin) == true)

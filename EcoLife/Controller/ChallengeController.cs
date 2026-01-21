@@ -41,6 +41,17 @@ namespace EcoLife.Controller
             return challenges;
         }
 
+        public List<Challenge> GetChallengeByDate(DateTime dateTime)
+        {
+            List<Challenge> challenges = new List<Challenge>();
+            using (DbContext context = new DbContext())
+            {
+                _challengeRepo = new ChallengeRepository(context);
+                challenges = _challengeRepo.ReadByTimeDateChallenge(dateTime);
+            }
+            return challenges;
+        }
+
         public void CreateChallenge(Challenge challenge, User user)
         {
             if (user != null && user.Role == "admin")

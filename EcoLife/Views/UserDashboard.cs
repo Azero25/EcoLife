@@ -318,7 +318,8 @@ namespace EcoLife.Views
         {
             try
             {
-                List<Challenge> allChallenges = challengeRepo.GetAllChallenge();
+                DateTime now = DateTime.Now;
+                List<Challenge> allChallenges = challengeRepo.ReadByTimeDateChallenge(now);
 
                 activeChallenges = allChallenges
                     .Where(c => !completedChallengeIds.Contains(c.IdChallenge))
