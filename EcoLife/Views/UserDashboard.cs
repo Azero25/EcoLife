@@ -246,7 +246,7 @@ namespace EcoLife.Views
 
         private void LoadUserInfo()
         {
-            lblHelloUser.Text = "Hello, " + currentUser.Username;
+            lblHelloUser.Text = "Hello, " + currentUser.Name;
 
             int score = currentUser.TotalScore;
             lblScore.Text = score.ToString();
