@@ -74,7 +74,6 @@ namespace EcoLife.Model.Repository
                         Name = reader["name"].ToString(),
                         Email = reader["email"].ToString(),
                         Role = reader["role"].ToString(),
-                        // ✅ TAMBAHKAN INI!
                         TotalScore = reader["total_score"] != DBNull.Value
                             ? Convert.ToInt32(reader["total_score"])
                             : 0,
@@ -122,7 +121,7 @@ namespace EcoLife.Model.Repository
         public User GetUserById(int id)
         {
             User user = null;
-            string sql = "SELECT * FROM users WHERE id_user = @id";
+            string sql = @"SELECT * FROM users WHERE id_user = @id";
 
             using (SQLiteCommand cmd = new SQLiteCommand(sql, _conn))
             {
@@ -157,7 +156,7 @@ namespace EcoLife.Model.Repository
         public List<User> GetUserByName(string name)
         {
             List<User> users = new List<User>();
-            string sql = "SELECT * FROM users WHERE name LIKE @name";
+            string sql = @"SELECT * FROM users WHERE name LIKE @name";
 
             using (SQLiteCommand cmd = new SQLiteCommand(sql, _conn))
             {
@@ -173,7 +172,6 @@ namespace EcoLife.Model.Repository
                             Email = reader["email"].ToString(),
                             Password = reader["password"].ToString(),
                             Role = reader["role"].ToString(),
-                            // ✅ TAMBAHKAN INI!
                             TotalScore = reader["total_score"] != DBNull.Value
                                 ? Convert.ToInt32(reader["total_score"])
                                 : 0,
@@ -192,7 +190,7 @@ namespace EcoLife.Model.Repository
         public string GetPasswordById(int id)
         {
             string password = null;
-            string sql = "SELECT password FROM users WHERE id_user = @id";
+            string sql = @"SELECT password FROM users WHERE id_user = @id";
             using (SQLiteCommand cmd = new SQLiteCommand(sql, _conn))
             {
                 cmd.Parameters.AddWithValue("@id", id);
@@ -220,7 +218,7 @@ namespace EcoLife.Model.Repository
             string sql = $@"UPDATE users 
                     SET name = @name, 
                         email = @email,
-                        role = @role,
+                        role = @role
                         {(updatePassword ? ", password = @password" : "")}
                     WHERE id_user = @id";
 
@@ -269,7 +267,7 @@ namespace EcoLife.Model.Repository
         {
             try
             {
-                string sql = "UPDATE users SET total_score = @total_score WHERE id_user = @id_user";
+                string sql = @"UPDATE users SET total_score = @total_score WHERE id_user = @id_user";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(sql, _conn))
                 {

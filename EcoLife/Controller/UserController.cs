@@ -98,6 +98,57 @@ namespace EcoLife.Controller
             }
         }
 
+        public int CreateUser(User user)
+        {
+            int result = 0;
+
+            if (string.IsNullOrEmpty(user.Name))
+            {
+                MessageBox.Show("Nama harus diisi !!!", "Peringatan",
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return 0;
+            }
+
+            if (string.IsNullOrEmpty(user.Email))
+            {
+                MessageBox.Show("Email harus diisi !!!", "Peringatan",
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return 0;
+            }
+
+            if (!user.Email.Contains("@") || !user.Email.Contains("."))
+            {
+                MessageBox.Show("Email harus mengandung '@' dan '.' !!!", "Peringatan",
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return 0;
+            }
+
+            if (string.IsNullOrEmpty(user.Password))
+            {
+                MessageBox.Show("Password harus diisi !!!", "Peringatan",
+                        MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return 0;
+            }
+
+            using (DbContext context = new DbContext())
+            {
+                _userRepo = new UserRepository(context);
+                if (_userRepo.IsEmailExist(user.Email) == false)
+                {
+                    user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
+                    result = _userRepo.CreateUser(user);
+                }
+                else
+                {
+                    MessageBox.Show("Akun sudah ada, silahkan gunakan akun lain!!!", "Peringatan",
+                       MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    return 0;
+                }
+            }
+
+            return result;
+        }
+
         public List<User> ReadAllUser()
         {
             List<User> listUser = new List<User>();
