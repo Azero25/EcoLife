@@ -18,11 +18,11 @@ namespace EcoLife.Model.Repository
             _conn = context.Conn;
         }
 
-        // Creating user (Register user)
+
         public int CreateUser(User user)
         {
-            string sql = @"INSERT INTO users (name, email, password, role)
-                           VALUES (@name, @email, @password, @role)";
+            string sql = @"INSERT INTO users (name, email, password, role, total_score)
+                   VALUES (@name, @email, @password, @role, @total_score)";
 
             using (SQLiteCommand cmd = new SQLiteCommand(sql, _conn))
             {
@@ -30,6 +30,7 @@ namespace EcoLife.Model.Repository
                 cmd.Parameters.AddWithValue("@email", user.Email);
                 cmd.Parameters.AddWithValue("@password", user.Password);
                 cmd.Parameters.AddWithValue("@role", user.Role);
+                cmd.Parameters.AddWithValue("@total_score", 0); // ✅ Set default score = 0
 
                 return cmd.ExecuteNonQuery();
             }
@@ -48,7 +49,7 @@ namespace EcoLife.Model.Repository
             }
         }
 
-        // Login User
+
         public User Login(string email, string password)
         {
             string sql = @"SELECT * FROM users WHERE email = @email LIMIT 1";
@@ -67,23 +68,32 @@ namespace EcoLife.Model.Repository
                     if (!BCrypt.Net.BCrypt.Verify(password, hashPassword))
                         return null;
 
-                    return new User
+                    var user = new User
                     {
                         IdUser = Convert.ToInt32(reader["id_user"]),
                         Name = reader["name"].ToString(),
                         Email = reader["email"].ToString(),
                         Role = reader["role"].ToString(),
+                        // ✅ TAMBAHKAN INI!
+                        TotalScore = reader["total_score"] != DBNull.Value
+                            ? Convert.ToInt32(reader["total_score"])
+                            : 0,
                         CreatedAt = Convert.ToDateTime(reader["created_at"])
                     };
+
+                    System.Diagnostics.Debug.WriteLine($"[Login] User {user.Name} logged in with score: {user.TotalScore}");
+
+                    return user;
                 }
             }
         }
 
+
         public List<User> GetAllUsers()
         {
             List<User> users = new List<User>();
-            string sql = @"SELECT id_user, name, email, role, created_at
-                           FROM users ORDER BY name";
+            string sql = @"SELECT id_user, name, email, role, total_score, created_at
+                   FROM users ORDER BY name";
             using (SQLiteCommand cmd = new SQLiteCommand(sql, _conn))
             {
                 using (SQLiteDataReader rdr = cmd.ExecuteReader())
@@ -96,6 +106,9 @@ namespace EcoLife.Model.Repository
                             Name = rdr["name"].ToString(),
                             Email = rdr["email"].ToString(),
                             Role = rdr["role"].ToString(),
+                            TotalScore = rdr["total_score"] != DBNull.Value
+                                ? Convert.ToInt32(rdr["total_score"])
+                                : 0,
                             CreatedAt = Convert.ToDateTime(rdr["created_at"])
                         });
                     }
@@ -104,7 +117,8 @@ namespace EcoLife.Model.Repository
             return users;
         }
 
-        // Get data user by id
+
+
         public User GetUserById(int id)
         {
             User user = null;
@@ -123,25 +137,33 @@ namespace EcoLife.Model.Repository
                             Name = reader["name"].ToString(),
                             Email = reader["email"].ToString(),
                             Password = reader["password"].ToString(),
-                            Role = reader["role"].ToString()
+                            Role = reader["role"].ToString(),
+                            TotalScore = reader["total_score"] != DBNull.Value
+                                ? Convert.ToInt32(reader["total_score"])
+                                : 0,
+                            CreatedAt = reader["created_at"] != DBNull.Value
+                                ? Convert.ToDateTime(reader["created_at"])
+                                : DateTime.Now
                         };
+
+                        System.Diagnostics.Debug.WriteLine($"[GetUserById] Loaded user {id} with score: {user.TotalScore}");
                     }
                 }
             }
             return user;
         }
 
-        // Get data user by name
+
         public List<User> GetUserByName(string name)
         {
-            List<User> users = null;
+            List<User> users = new List<User>();
             string sql = "SELECT * FROM users WHERE name LIKE @name";
+
             using (SQLiteCommand cmd = new SQLiteCommand(sql, _conn))
             {
                 cmd.Parameters.AddWithValue("@name", "%" + name + "%");
                 using (SQLiteDataReader reader = cmd.ExecuteReader())
                 {
-                    users = new List<User>();
                     while (reader.Read())
                     {
                         users.Add(new User
@@ -150,7 +172,14 @@ namespace EcoLife.Model.Repository
                             Name = reader["name"].ToString(),
                             Email = reader["email"].ToString(),
                             Password = reader["password"].ToString(),
-                            Role = reader["role"].ToString()
+                            Role = reader["role"].ToString(),
+                            // ✅ TAMBAHKAN INI!
+                            TotalScore = reader["total_score"] != DBNull.Value
+                                ? Convert.ToInt32(reader["total_score"])
+                                : 0,
+                            CreatedAt = reader["created_at"] != DBNull.Value
+                                ? Convert.ToDateTime(reader["created_at"])
+                                : DateTime.Now
                         });
                     }
                 }
@@ -186,13 +215,12 @@ namespace EcoLife.Model.Repository
                 throw new Exception("ID user tidak valid.");
 
             int result;
-            // Gunakan logika SQL dinamis agar tidak menimpa password jika kosong
             bool updatePassword = !string.IsNullOrWhiteSpace(user.Password);
 
             string sql = $@"UPDATE users 
                     SET name = @name, 
                         email = @email,
-                        role = @role
+                        role = @role,
                         {(updatePassword ? ", password = @password" : "")}
                     WHERE id_user = @id";
 
@@ -261,6 +289,8 @@ namespace EcoLife.Model.Repository
                 throw new Exception("Gagal mengupdate skor user", ex);
             }
         }
+
+
 
     }
 }

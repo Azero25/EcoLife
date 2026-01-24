@@ -107,39 +107,46 @@ namespace EcoLife.Model.Repository
             return listChallenge;
         }
 
-        public List<Challenge> ReadByTimeDateChallenge(DateTime dateTime)
+     
+
+        public List<Challenge> ReadByTimeDateChallenge(DateTime date)
         {
             List<Challenge> challenges = new List<Challenge>();
 
-            try             {
+            try
+            {
+                // LOGIKA: Bandingkan CreatedAt (LocalTime) dengan parameter Date
                 string sql = @"SELECT id_challenge, name_challenge, desc_challenge,
-                              point_challenge, created_at
-                       FROM challenge
-                       WHERE DATE(created_at) = DATE(@dateTime)
-                       ORDER BY name_challenge";
+                      point_challenge, created_at
+               FROM challenge
+               WHERE DATE(created_at, 'localtime') = DATE(@date)
+               ORDER BY id_challenge";
+
                 using (SQLiteCommand cmd = new SQLiteCommand(sql, _conn))
                 {
-                    cmd.Parameters.AddWithValue("@dateTime", dateTime);
+                    // Pastikan format tanggal sesuai format SQLite (yyyy-MM-dd)
+                    cmd.Parameters.AddWithValue("@date", date.ToString("yyyy-MM-dd"));
+
                     using (SQLiteDataReader dtr = cmd.ExecuteReader())
                     {
                         while (dtr.Read())
                         {
-                            Challenge challenge = new Challenge
+                            challenges.Add(new Challenge
                             {
                                 IdChallenge = Convert.ToInt32(dtr["id_challenge"]),
                                 NameChallenge = dtr["name_challenge"].ToString(),
                                 DecsChallenge = dtr["desc_challenge"].ToString(),
                                 PointChallenge = Convert.ToInt32(dtr["point_challenge"]),
-                                CreatedAt = Convert.ToDateTime(dtr["created_at"])
-                            };
-                            challenges.Add(challenge);
+                                // Penting: Konversi ke LocalTime agar validasi di Dashboard akurat
+                                CreatedAt = Convert.ToDateTime(dtr["created_at"]).ToLocalTime()
+                            });
                         }
                     }
                 }
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.Print("ReadByTime error: {0}", ex.Message);
+                System.Diagnostics.Debug.WriteLine("ReadByTimeDateChallenge ERROR: " + ex.Message);
             }
 
             return challenges;

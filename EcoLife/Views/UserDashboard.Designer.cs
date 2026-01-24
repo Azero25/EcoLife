@@ -34,6 +34,7 @@
             this.btnAccountUser = new Guna.UI2.WinForms.Guna2ImageButton();
             this.btnLogoutUser = new Guna.UI2.WinForms.Guna2ImageButton();
             this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.picturebox = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.lblLevel = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lblScore = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -56,14 +57,13 @@
             this.btnFinishCh3 = new Guna.UI2.WinForms.Guna2Button();
             this.lblChallengeDesc3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.lblChallengeName3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.picturebox = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.iconEco)).BeginInit();
             this.guna2CustomGradientPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picturebox)).BeginInit();
             this.lvActivityHistory.SuspendLayout();
             this.panelChallenges.SuspendLayout();
             this.guna2CustomGradientPanel4.SuspendLayout();
             this.guna2CustomGradientPanel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picturebox)).BeginInit();
             this.SuspendLayout();
             // 
             // iconEco
@@ -125,7 +125,8 @@
             // 
             // guna2CustomGradientPanel1
             // 
-            this.guna2CustomGradientPanel1.BorderRadius = 25;
+            this.guna2CustomGradientPanel1.BorderColor = System.Drawing.Color.Teal;
+            this.guna2CustomGradientPanel1.BorderRadius = 10;
             this.guna2CustomGradientPanel1.Controls.Add(this.picturebox);
             this.guna2CustomGradientPanel1.Controls.Add(this.lblLevel);
             this.guna2CustomGradientPanel1.Controls.Add(this.lblScore);
@@ -134,20 +135,31 @@
             this.guna2CustomGradientPanel1.Controls.Add(this.pbLevel);
             this.guna2CustomGradientPanel1.Controls.Add(this.lblHelloUser);
             this.guna2CustomGradientPanel1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(50)))));
-            this.guna2CustomGradientPanel1.FillColor2 = System.Drawing.Color.Teal;
-            this.guna2CustomGradientPanel1.FillColor3 = System.Drawing.Color.Teal;
+            this.guna2CustomGradientPanel1.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(22)))), ((int)(((byte)(29)))));
+            this.guna2CustomGradientPanel1.FillColor3 = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(135)))), ((int)(((byte)(102)))));
             this.guna2CustomGradientPanel1.FillColor4 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(50)))));
             this.guna2CustomGradientPanel1.Location = new System.Drawing.Point(31, 100);
             this.guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
             this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(641, 360);
             this.guna2CustomGradientPanel1.TabIndex = 6;
             // 
+            // picturebox
+            // 
+            this.picturebox.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(94)))), ((int)(((byte)(74)))));
+            this.picturebox.ImageRotate = 0F;
+            this.picturebox.Location = new System.Drawing.Point(422, 65);
+            this.picturebox.Name = "picturebox";
+            this.picturebox.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
+            this.picturebox.Size = new System.Drawing.Size(151, 145);
+            this.picturebox.TabIndex = 15;
+            this.picturebox.TabStop = false;
+            // 
             // lblLevel
             // 
             this.lblLevel.AutoSize = false;
             this.lblLevel.BackColor = System.Drawing.Color.Transparent;
             this.lblLevel.Font = new System.Drawing.Font("Poppins Medium", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLevel.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblLevel.ForeColor = System.Drawing.Color.White;
             this.lblLevel.Location = new System.Drawing.Point(189, 150);
             this.lblLevel.Name = "lblLevel";
             this.lblLevel.Size = new System.Drawing.Size(92, 44);
@@ -160,7 +172,7 @@
             this.lblScore.AutoSize = false;
             this.lblScore.BackColor = System.Drawing.Color.Transparent;
             this.lblScore.Font = new System.Drawing.Font("Poppins Medium", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblScore.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.lblScore.ForeColor = System.Drawing.Color.White;
             this.lblScore.Location = new System.Drawing.Point(189, 95);
             this.lblScore.Name = "lblScore";
             this.lblScore.Size = new System.Drawing.Size(108, 45);
@@ -173,7 +185,7 @@
             this.guna2HtmlLabel3.AutoSize = false;
             this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel3.Font = new System.Drawing.Font("Poppins Medium", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel3.ForeColor = System.Drawing.SystemColors.Window;
+            this.guna2HtmlLabel3.ForeColor = System.Drawing.Color.White;
             this.guna2HtmlLabel3.Location = new System.Drawing.Point(57, 150);
             this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
             this.guna2HtmlLabel3.Size = new System.Drawing.Size(108, 44);
@@ -185,7 +197,7 @@
             this.guna2HtmlLabel2.AutoSize = false;
             this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel2.Font = new System.Drawing.Font("Poppins Medium", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel2.ForeColor = System.Drawing.SystemColors.Window;
+            this.guna2HtmlLabel2.ForeColor = System.Drawing.Color.White;
             this.guna2HtmlLabel2.Location = new System.Drawing.Point(57, 95);
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
             this.guna2HtmlLabel2.Size = new System.Drawing.Size(108, 49);
@@ -196,13 +208,13 @@
             // 
             this.pbLevel.BorderColor = System.Drawing.Color.Transparent;
             this.pbLevel.BorderRadius = 10;
-            this.pbLevel.FillColor = System.Drawing.Color.MintCream;
+            this.pbLevel.FillColor = System.Drawing.Color.LightCyan;
             this.pbLevel.Font = new System.Drawing.Font("Poppins SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pbLevel.ForeColor = System.Drawing.Color.LightSeaGreen;
             this.pbLevel.Location = new System.Drawing.Point(44, 216);
             this.pbLevel.Name = "pbLevel";
             this.pbLevel.ProgressColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.pbLevel.ProgressColor2 = System.Drawing.Color.SpringGreen;
+            this.pbLevel.ProgressColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.pbLevel.ShowText = true;
             this.pbLevel.Size = new System.Drawing.Size(300, 30);
             this.pbLevel.TabIndex = 3;
@@ -215,21 +227,21 @@
             this.lblHelloUser.AutoSize = false;
             this.lblHelloUser.BackColor = System.Drawing.Color.Transparent;
             this.lblHelloUser.Font = new System.Drawing.Font("Poppins Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHelloUser.ForeColor = System.Drawing.SystemColors.Window;
+            this.lblHelloUser.ForeColor = System.Drawing.Color.White;
             this.lblHelloUser.Location = new System.Drawing.Point(57, 36);
             this.lblHelloUser.Name = "lblHelloUser";
-            this.lblHelloUser.Size = new System.Drawing.Size(224, 43);
+            this.lblHelloUser.Size = new System.Drawing.Size(349, 43);
             this.lblHelloUser.TabIndex = 0;
             this.lblHelloUser.Text = "Hello User!";
             // 
             // lvActivityHistory
             // 
-            this.lvActivityHistory.BorderRadius = 25;
+            this.lvActivityHistory.BorderRadius = 10;
             this.lvActivityHistory.Controls.Add(this.lbHistory);
             this.lvActivityHistory.Controls.Add(this.ActivityHistory);
             this.lvActivityHistory.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(50)))));
-            this.lvActivityHistory.FillColor2 = System.Drawing.Color.Teal;
-            this.lvActivityHistory.FillColor3 = System.Drawing.Color.Teal;
+            this.lvActivityHistory.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(22)))), ((int)(((byte)(29)))));
+            this.lvActivityHistory.FillColor3 = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(135)))), ((int)(((byte)(102)))));
             this.lvActivityHistory.FillColor4 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(50)))));
             this.lvActivityHistory.Location = new System.Drawing.Point(31, 483);
             this.lvActivityHistory.Name = "lvActivityHistory";
@@ -238,38 +250,38 @@
             // 
             // lbHistory
             // 
-            this.lbHistory.BackColor = System.Drawing.Color.PowderBlue;
-            this.lbHistory.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lbHistory.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(156)))), ((int)(((byte)(115)))));
             this.lbHistory.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbHistory.Font = new System.Drawing.Font("Poppins", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbHistory.ForeColor = System.Drawing.Color.MintCream;
             this.lbHistory.FormattingEnabled = true;
             this.lbHistory.ItemHeight = 28;
-            this.lbHistory.Location = new System.Drawing.Point(44, 82);
+            this.lbHistory.Location = new System.Drawing.Point(18, 57);
             this.lbHistory.Name = "lbHistory";
-            this.lbHistory.Size = new System.Drawing.Size(540, 84);
+            this.lbHistory.Size = new System.Drawing.Size(611, 116);
             this.lbHistory.TabIndex = 5;
             // 
             // ActivityHistory
             // 
             this.ActivityHistory.AutoSize = false;
             this.ActivityHistory.BackColor = System.Drawing.Color.Transparent;
-            this.ActivityHistory.Font = new System.Drawing.Font("Poppins Medium", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ActivityHistory.ForeColor = System.Drawing.SystemColors.Window;
-            this.ActivityHistory.Location = new System.Drawing.Point(44, 20);
+            this.ActivityHistory.Font = new System.Drawing.Font("Poppins", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ActivityHistory.ForeColor = System.Drawing.Color.White;
+            this.ActivityHistory.Location = new System.Drawing.Point(18, 3);
             this.ActivityHistory.Name = "ActivityHistory";
-            this.ActivityHistory.Size = new System.Drawing.Size(300, 56);
+            this.ActivityHistory.Size = new System.Drawing.Size(231, 48);
             this.ActivityHistory.TabIndex = 4;
             this.ActivityHistory.Text = "Activity History";
             // 
             // panelChallenges
             // 
-            this.panelChallenges.BorderRadius = 25;
+            this.panelChallenges.BorderRadius = 10;
             this.panelChallenges.Controls.Add(this.btnFinishCh1);
             this.panelChallenges.Controls.Add(this.lblChallengeDesc1);
             this.panelChallenges.Controls.Add(this.lblChallengeName1);
             this.panelChallenges.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(50)))));
-            this.panelChallenges.FillColor2 = System.Drawing.Color.Teal;
-            this.panelChallenges.FillColor3 = System.Drawing.Color.Teal;
+            this.panelChallenges.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(22)))), ((int)(((byte)(29)))));
+            this.panelChallenges.FillColor3 = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(135)))), ((int)(((byte)(102)))));
             this.panelChallenges.FillColor4 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(50)))));
             this.panelChallenges.Location = new System.Drawing.Point(712, 148);
             this.panelChallenges.Name = "panelChallenges";
@@ -278,13 +290,14 @@
             // 
             // btnFinishCh1
             // 
-            this.btnFinishCh1.BorderColor = System.Drawing.Color.Transparent;
+            this.btnFinishCh1.BorderColor = System.Drawing.Color.Aquamarine;
+            this.btnFinishCh1.BorderRadius = 9;
             this.btnFinishCh1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnFinishCh1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnFinishCh1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnFinishCh1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnFinishCh1.FillColor = System.Drawing.Color.LightSeaGreen;
-            this.btnFinishCh1.Font = new System.Drawing.Font("Poppins SemiBold", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFinishCh1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(156)))), ((int)(((byte)(115)))));
+            this.btnFinishCh1.Font = new System.Drawing.Font("Poppins SemiBold", 8F, System.Drawing.FontStyle.Bold);
             this.btnFinishCh1.ForeColor = System.Drawing.Color.Aquamarine;
             this.btnFinishCh1.Location = new System.Drawing.Point(318, 114);
             this.btnFinishCh1.Name = "btnFinishCh1";
@@ -312,7 +325,7 @@
             this.lblChallengeName1.ForeColor = System.Drawing.SystemColors.Window;
             this.lblChallengeName1.Location = new System.Drawing.Point(12, 17);
             this.lblChallengeName1.Name = "lblChallengeName1";
-            this.lblChallengeName1.Size = new System.Drawing.Size(282, 38);
+            this.lblChallengeName1.Size = new System.Drawing.Size(431, 38);
             this.lblChallengeName1.TabIndex = 9;
             this.lblChallengeName1.Text = "Nama Challange ";
             // 
@@ -330,13 +343,13 @@
             // 
             // guna2CustomGradientPanel4
             // 
-            this.guna2CustomGradientPanel4.BorderRadius = 25;
+            this.guna2CustomGradientPanel4.BorderRadius = 10;
             this.guna2CustomGradientPanel4.Controls.Add(this.btnFinishCh2);
             this.guna2CustomGradientPanel4.Controls.Add(this.lblChallengeDesc2);
             this.guna2CustomGradientPanel4.Controls.Add(this.lblChallengeName2);
             this.guna2CustomGradientPanel4.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(50)))));
-            this.guna2CustomGradientPanel4.FillColor2 = System.Drawing.Color.Teal;
-            this.guna2CustomGradientPanel4.FillColor3 = System.Drawing.Color.Teal;
+            this.guna2CustomGradientPanel4.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(22)))), ((int)(((byte)(29)))));
+            this.guna2CustomGradientPanel4.FillColor3 = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(135)))), ((int)(((byte)(102)))));
             this.guna2CustomGradientPanel4.FillColor4 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(50)))));
             this.guna2CustomGradientPanel4.Location = new System.Drawing.Point(712, 316);
             this.guna2CustomGradientPanel4.Name = "guna2CustomGradientPanel4";
@@ -345,12 +358,14 @@
             // 
             // btnFinishCh2
             // 
+            this.btnFinishCh2.BorderColor = System.Drawing.Color.Aquamarine;
+            this.btnFinishCh2.BorderRadius = 9;
             this.btnFinishCh2.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnFinishCh2.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnFinishCh2.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnFinishCh2.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnFinishCh2.FillColor = System.Drawing.Color.LightSeaGreen;
-            this.btnFinishCh2.Font = new System.Drawing.Font("Poppins SemiBold", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFinishCh2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(156)))), ((int)(((byte)(115)))));
+            this.btnFinishCh2.Font = new System.Drawing.Font("Poppins SemiBold", 8F, System.Drawing.FontStyle.Bold);
             this.btnFinishCh2.ForeColor = System.Drawing.Color.Aquamarine;
             this.btnFinishCh2.Location = new System.Drawing.Point(318, 112);
             this.btnFinishCh2.Name = "btnFinishCh2";
@@ -378,19 +393,19 @@
             this.lblChallengeName2.ForeColor = System.Drawing.SystemColors.Window;
             this.lblChallengeName2.Location = new System.Drawing.Point(12, 17);
             this.lblChallengeName2.Name = "lblChallengeName2";
-            this.lblChallengeName2.Size = new System.Drawing.Size(282, 46);
+            this.lblChallengeName2.Size = new System.Drawing.Size(431, 46);
             this.lblChallengeName2.TabIndex = 9;
             this.lblChallengeName2.Text = "Nama Challange ";
             // 
             // guna2CustomGradientPanel5
             // 
-            this.guna2CustomGradientPanel5.BorderRadius = 25;
+            this.guna2CustomGradientPanel5.BorderRadius = 10;
             this.guna2CustomGradientPanel5.Controls.Add(this.btnFinishCh3);
             this.guna2CustomGradientPanel5.Controls.Add(this.lblChallengeDesc3);
             this.guna2CustomGradientPanel5.Controls.Add(this.lblChallengeName3);
             this.guna2CustomGradientPanel5.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(50)))));
-            this.guna2CustomGradientPanel5.FillColor2 = System.Drawing.Color.Teal;
-            this.guna2CustomGradientPanel5.FillColor3 = System.Drawing.Color.Teal;
+            this.guna2CustomGradientPanel5.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(7)))), ((int)(((byte)(22)))), ((int)(((byte)(29)))));
+            this.guna2CustomGradientPanel5.FillColor3 = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(135)))), ((int)(((byte)(102)))));
             this.guna2CustomGradientPanel5.FillColor4 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(50)))));
             this.guna2CustomGradientPanel5.Location = new System.Drawing.Point(712, 484);
             this.guna2CustomGradientPanel5.Name = "guna2CustomGradientPanel5";
@@ -399,12 +414,14 @@
             // 
             // btnFinishCh3
             // 
+            this.btnFinishCh3.BorderColor = System.Drawing.Color.Aquamarine;
+            this.btnFinishCh3.BorderRadius = 9;
             this.btnFinishCh3.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.btnFinishCh3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnFinishCh3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnFinishCh3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnFinishCh3.FillColor = System.Drawing.Color.LightSeaGreen;
-            this.btnFinishCh3.Font = new System.Drawing.Font("Poppins SemiBold", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFinishCh3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(156)))), ((int)(((byte)(115)))));
+            this.btnFinishCh3.Font = new System.Drawing.Font("Poppins SemiBold", 8F, System.Drawing.FontStyle.Bold);
             this.btnFinishCh3.ForeColor = System.Drawing.Color.Aquamarine;
             this.btnFinishCh3.Location = new System.Drawing.Point(318, 118);
             this.btnFinishCh3.Name = "btnFinishCh3";
@@ -432,25 +449,15 @@
             this.lblChallengeName3.ForeColor = System.Drawing.SystemColors.Window;
             this.lblChallengeName3.Location = new System.Drawing.Point(12, 17);
             this.lblChallengeName3.Name = "lblChallengeName3";
-            this.lblChallengeName3.Size = new System.Drawing.Size(317, 46);
+            this.lblChallengeName3.Size = new System.Drawing.Size(431, 46);
             this.lblChallengeName3.TabIndex = 9;
             this.lblChallengeName3.Text = "Nama Challange ";
-            // 
-            // picturebox
-            // 
-            this.picturebox.ImageRotate = 0F;
-            this.picturebox.Location = new System.Drawing.Point(422, 65);
-            this.picturebox.Name = "picturebox";
-            this.picturebox.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
-            this.picturebox.Size = new System.Drawing.Size(151, 145);
-            this.picturebox.TabIndex = 15;
-            this.picturebox.TabStop = false;
             // 
             // UserDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(50)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(56)))), ((int)(((byte)(46)))));
             this.ClientSize = new System.Drawing.Size(1200, 692);
             this.Controls.Add(this.guna2CustomGradientPanel5);
             this.Controls.Add(this.guna2CustomGradientPanel4);
@@ -469,11 +476,11 @@
             this.Text = "UserDashboard";
             ((System.ComponentModel.ISupportInitialize)(this.iconEco)).EndInit();
             this.guna2CustomGradientPanel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picturebox)).EndInit();
             this.lvActivityHistory.ResumeLayout(false);
             this.panelChallenges.ResumeLayout(false);
             this.guna2CustomGradientPanel4.ResumeLayout(false);
             this.guna2CustomGradientPanel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picturebox)).EndInit();
             this.ResumeLayout(false);
 
         }

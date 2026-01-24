@@ -13,5 +13,6 @@ namespace EcoLife.Model.Entity
         public string DecsChallenge { get; set; }
         public int PointChallenge { get; set; }
         public DateTime CreatedAt { get; set; }
+        public DateTime DateChallenge { get; internal set; }
     }
 }

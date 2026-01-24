@@ -64,9 +64,10 @@
             this.guna2CustomGradientPanel1.FillColor2 = System.Drawing.Color.Transparent;
             this.guna2CustomGradientPanel1.FillColor3 = System.Drawing.Color.Transparent;
             this.guna2CustomGradientPanel1.FillColor4 = System.Drawing.Color.Transparent;
-            this.guna2CustomGradientPanel1.Location = new System.Drawing.Point(250, 12);
+            this.guna2CustomGradientPanel1.Location = new System.Drawing.Point(375, 18);
+            this.guna2CustomGradientPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
-            this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(300, 426);
+            this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(450, 655);
             this.guna2CustomGradientPanel1.TabIndex = 2;
             // 
             // txtConfirmProfileUser
@@ -81,11 +82,12 @@
             this.txtConfirmProfileUser.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtConfirmProfileUser.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtConfirmProfileUser.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtConfirmProfileUser.Location = new System.Drawing.Point(40, 270);
+            this.txtConfirmProfileUser.Location = new System.Drawing.Point(60, 415);
+            this.txtConfirmProfileUser.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.txtConfirmProfileUser.Name = "txtConfirmProfileUser";
             this.txtConfirmProfileUser.PlaceholderText = "";
             this.txtConfirmProfileUser.SelectedText = "";
-            this.txtConfirmProfileUser.Size = new System.Drawing.Size(225, 25);
+            this.txtConfirmProfileUser.Size = new System.Drawing.Size(338, 38);
             this.txtConfirmProfileUser.TabIndex = 10;
             // 
             // guna2HtmlLabel1
@@ -93,9 +95,10 @@
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Poppins SemiBold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(40, 253);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(60, 389);
+            this.guna2HtmlLabel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(104, 21);
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(162, 32);
             this.guna2HtmlLabel1.TabIndex = 9;
             this.guna2HtmlLabel1.Text = "Confirm Password";
             // 
@@ -106,12 +109,13 @@
             this.btnProfileUser.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnProfileUser.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnProfileUser.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnProfileUser.FillColor = System.Drawing.Color.DarkSlateGray;
-            this.btnProfileUser.Font = new System.Drawing.Font("Poppins SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProfileUser.ForeColor = System.Drawing.Color.White;
-            this.btnProfileUser.Location = new System.Drawing.Point(73, 323);
+            this.btnProfileUser.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(75)))), ((int)(((byte)(60)))));
+            this.btnProfileUser.Font = new System.Drawing.Font("Poppins SemiBold", 9F, System.Drawing.FontStyle.Bold);
+            this.btnProfileUser.ForeColor = System.Drawing.Color.Aquamarine;
+            this.btnProfileUser.Location = new System.Drawing.Point(110, 497);
+            this.btnProfileUser.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnProfileUser.Name = "btnProfileUser";
-            this.btnProfileUser.Size = new System.Drawing.Size(150, 30);
+            this.btnProfileUser.Size = new System.Drawing.Size(225, 46);
             this.btnProfileUser.TabIndex = 8;
             this.btnProfileUser.Text = "Simpan Data";
             this.btnProfileUser.Click += new System.EventHandler(this.btnProfileUser_Click);
@@ -128,11 +132,12 @@
             this.txtPasswordProfileUser.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPasswordProfileUser.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtPasswordProfileUser.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPasswordProfileUser.Location = new System.Drawing.Point(40, 208);
+            this.txtPasswordProfileUser.Location = new System.Drawing.Point(60, 320);
+            this.txtPasswordProfileUser.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.txtPasswordProfileUser.Name = "txtPasswordProfileUser";
             this.txtPasswordProfileUser.PlaceholderText = "";
             this.txtPasswordProfileUser.SelectedText = "";
-            this.txtPasswordProfileUser.Size = new System.Drawing.Size(225, 25);
+            this.txtPasswordProfileUser.Size = new System.Drawing.Size(338, 38);
             this.txtPasswordProfileUser.TabIndex = 7;
             // 
             // txtEmailProfileUser
@@ -147,11 +152,12 @@
             this.txtEmailProfileUser.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtEmailProfileUser.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtEmailProfileUser.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtEmailProfileUser.Location = new System.Drawing.Point(40, 149);
+            this.txtEmailProfileUser.Location = new System.Drawing.Point(60, 229);
+            this.txtEmailProfileUser.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.txtEmailProfileUser.Name = "txtEmailProfileUser";
             this.txtEmailProfileUser.PlaceholderText = "";
             this.txtEmailProfileUser.SelectedText = "";
-            this.txtEmailProfileUser.Size = new System.Drawing.Size(225, 25);
+            this.txtEmailProfileUser.Size = new System.Drawing.Size(338, 38);
             this.txtEmailProfileUser.TabIndex = 6;
             // 
             // txtNameProfileUser
@@ -166,11 +172,12 @@
             this.txtNameProfileUser.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtNameProfileUser.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtNameProfileUser.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtNameProfileUser.Location = new System.Drawing.Point(40, 89);
+            this.txtNameProfileUser.Location = new System.Drawing.Point(60, 137);
+            this.txtNameProfileUser.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.txtNameProfileUser.Name = "txtNameProfileUser";
             this.txtNameProfileUser.PlaceholderText = "";
             this.txtNameProfileUser.SelectedText = "";
-            this.txtNameProfileUser.Size = new System.Drawing.Size(225, 25);
+            this.txtNameProfileUser.Size = new System.Drawing.Size(338, 38);
             this.txtNameProfileUser.TabIndex = 5;
             // 
             // guna2HtmlLabel4
@@ -178,9 +185,10 @@
             this.guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel4.Font = new System.Drawing.Font("Poppins SemiBold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel4.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel4.Location = new System.Drawing.Point(40, 191);
+            this.guna2HtmlLabel4.Location = new System.Drawing.Point(60, 294);
+            this.guna2HtmlLabel4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2HtmlLabel4.Name = "guna2HtmlLabel4";
-            this.guna2HtmlLabel4.Size = new System.Drawing.Size(84, 21);
+            this.guna2HtmlLabel4.Size = new System.Drawing.Size(129, 32);
             this.guna2HtmlLabel4.TabIndex = 4;
             this.guna2HtmlLabel4.Text = "Password User";
             // 
@@ -189,9 +197,10 @@
             this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel3.Font = new System.Drawing.Font("Poppins SemiBold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel3.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(40, 131);
+            this.guna2HtmlLabel3.Location = new System.Drawing.Point(60, 202);
+            this.guna2HtmlLabel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            this.guna2HtmlLabel3.Size = new System.Drawing.Size(62, 21);
+            this.guna2HtmlLabel3.Size = new System.Drawing.Size(94, 32);
             this.guna2HtmlLabel3.TabIndex = 3;
             this.guna2HtmlLabel3.Text = "Email User";
             // 
@@ -200,20 +209,23 @@
             this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel2.Font = new System.Drawing.Font("Poppins SemiBold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel2.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(40, 71);
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(60, 109);
+            this.guna2HtmlLabel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(65, 21);
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(99, 32);
             this.guna2HtmlLabel2.TabIndex = 2;
             this.guna2HtmlLabel2.Text = "Nama User";
             // 
             // titleProfile
             // 
+            this.titleProfile.AutoSize = false;
             this.titleProfile.BackColor = System.Drawing.Color.Transparent;
             this.titleProfile.Font = new System.Drawing.Font("Poppins SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleProfile.ForeColor = System.Drawing.Color.White;
-            this.titleProfile.Location = new System.Drawing.Point(115, 17);
+            this.titleProfile.Location = new System.Drawing.Point(172, 26);
+            this.titleProfile.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.titleProfile.Name = "titleProfile";
-            this.titleProfile.Size = new System.Drawing.Size(76, 25);
+            this.titleProfile.Size = new System.Drawing.Size(191, 38);
             this.titleProfile.TabIndex = 1;
             this.titleProfile.Text = "Profile User";
             // 
@@ -225,21 +237,23 @@
             this.btnBackProfileUser.ImageOffset = new System.Drawing.Point(0, 0);
             this.btnBackProfileUser.ImageRotate = 0F;
             this.btnBackProfileUser.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnBackProfileUser.Location = new System.Drawing.Point(13, 17);
+            this.btnBackProfileUser.Location = new System.Drawing.Point(20, 26);
+            this.btnBackProfileUser.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnBackProfileUser.Name = "btnBackProfileUser";
             this.btnBackProfileUser.PressedState.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnBackProfileUser.Size = new System.Drawing.Size(25, 25);
+            this.btnBackProfileUser.Size = new System.Drawing.Size(38, 38);
             this.btnBackProfileUser.TabIndex = 0;
             this.btnBackProfileUser.Click += new System.EventHandler(this.btnBackProfileUser_Click);
             // 
             // UserProfile
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(50)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1200, 692);
             this.Controls.Add(this.guna2CustomGradientPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "UserProfile";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "User Profile";

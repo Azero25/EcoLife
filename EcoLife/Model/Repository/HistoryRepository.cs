@@ -20,23 +20,23 @@ namespace EcoLife.Model.Repository
 
         public List<History> GetAllHistoryUser(User user)
         {
-
             List<History> listHistory = new List<History>();
 
             try
             {
-                // declare sql command
+            
                 string sql = @"
-                    SELECT 
-                        h.id_history,
-                        c.name_challenge,
-                        c.desc_challenge,
-                        h.created_at
-                    FROM history h
-                    JOIN challenge c ON h.id_challenge = c.id_challenge
-                    WHERE h.id_user = @idUser
-                    ORDER BY h.created_at DESC
-                ";
+            SELECT 
+                h.id_history,
+                h.id_user,
+                h.id_challenge,
+                h.name_history,
+                h.desc_history,
+                h.created_at
+            FROM history h
+            WHERE h.id_user = @idUser
+            ORDER BY h.created_at DESC
+        ";
 
                 using (SQLiteCommand cmd = new SQLiteCommand(sql, _conn))
                 {
@@ -48,9 +48,11 @@ namespace EcoLife.Model.Repository
                         {
                             History history = new History();
                             history.IdHistory = dtr.GetInt32(0);
+                            history.IdUser = dtr.GetInt32(1);
+                            history.IdChallenge = dtr.GetInt32(2);  
                             history.NameHistory = dtr["name_history"].ToString();
-                            history.DecsHistory = dtr.IsDBNull(2) ? null : dtr["desc_history"].ToString();
-                            history.CreatedAt = dtr.GetDateTime(3);
+                            history.DecsHistory = dtr.IsDBNull(4) ? null : dtr["desc_history"].ToString();
+                            history.CreatedAt = dtr.GetDateTime(5);
 
                             listHistory.Add(history);
                         }
@@ -59,7 +61,7 @@ namespace EcoLife.Model.Repository
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.Print("ReadAll error: {0}", ex.Message);
+                System.Diagnostics.Debug.Print("GetAllHistoryUser error: {0}", ex.Message);
             }
 
             return listHistory;

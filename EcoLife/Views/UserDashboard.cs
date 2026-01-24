@@ -25,6 +25,7 @@ namespace EcoLife.Views
         private BadgeController badgeController;
         private PictureBox pbUserBadge;
         private Label lblUserTitle;
+        private HistoryController historyController;
 
         public UserDashboard(User user)
         {
@@ -36,6 +37,8 @@ namespace EcoLife.Views
             DbContext context = new DbContext();
             this.challengeRepo = new ChallengeRepository(context);
             this.badgeController = new BadgeController();
+            this.historyController = new HistoryController(user); 
+
 
             this.Load += UserDashboard_Load;
             this.userController = new UserController();
@@ -240,25 +243,30 @@ namespace EcoLife.Views
             if (currentUser == null) return;
 
             LoadUserInfo();
-            LoadChallenge();
             LoadHistory();
+            LoadChallenge();
         }
 
         private void LoadUserInfo()
         {
-            lblHelloUser.Text = "Hello, " + currentUser.Name;
+            currentUser = userController.GetUserById(currentUser.IdUser);
+
+            if (currentUser == null) return;
+
+            lblHelloUser.Text = "Hello " + currentUser.Name ;
 
             int score = currentUser.TotalScore;
-            lblScore.Text = score.ToString();
-
             int level = GetLevelFromScore(score);
+
+            lblScore.Text = score.ToString();
             lblLevel.Text = level.ToString();
 
             SetProgressBar(score, level);
             UpdateBadgeAndTitle(level);
+
+            System.Diagnostics.Debug.WriteLine($"[LoadUserInfo] Score: {score}, Level: {level}");
         }
 
-        // Konversi score ke level (sinkron dengan badge: 1, 10, 25, 50, 100)
         private int GetLevelFromScore(int score)
         {
             if (score < 1000) return 1;
@@ -268,7 +276,6 @@ namespace EcoLife.Views
             else return 100;
         }
 
-        // Progress bar menampilkan total score dengan range sesuai level
         private void SetProgressBar(int score, int level)
         {
             int min = 0;
@@ -313,22 +320,40 @@ namespace EcoLife.Views
             System.Diagnostics.Debug.WriteLine($"[ProgressBar] Score:{score} | Level:{level} | Min:{min} | Max:{max} | Value:{pbLevel.Value}");
         }
 
-        // Load 3 challenge berikutnya yang belum diselesaikan
+
         private void LoadChallenge()
         {
             try
             {
+                ResetChallengeSlots();
+
                 DateTime now = DateTime.Now;
                 List<Challenge> allChallenges = challengeRepo.ReadByTimeDateChallenge(now);
 
+                System.Diagnostics.Debug.WriteLine($"[LoadChallenge] ===== DEBUG INFO =====");
+                System.Diagnostics.Debug.WriteLine($"[LoadChallenge] Current DateTime: {now:dd/MM/yyyy HH:mm:ss}");
+                System.Diagnostics.Debug.WriteLine($"[LoadChallenge] Total challenges from DB: {allChallenges.Count}");
+
+                // Debug: Tampilkan semua challenge yang didapat dari DB
+                foreach (var ch in allChallenges)
+                {
+                    System.Diagnostics.Debug.WriteLine($"[LoadChallenge]   - Challenge ID {ch.IdChallenge}: {ch.NameChallenge}");
+                }
+
+                System.Diagnostics.Debug.WriteLine($"[LoadChallenge] Completed challenge IDs today: [{string.Join(", ", completedChallengeIds)}]");
+
+                // Filter challenges yang belum diselesaikan HARI INI
                 activeChallenges = allChallenges
                     .Where(c => !completedChallengeIds.Contains(c.IdChallenge))
                     .Take(3)
                     .ToList();
 
-                System.Diagnostics.Debug.WriteLine($"Total challenges: {allChallenges.Count}, Available: {activeChallenges.Count}");
+                System.Diagnostics.Debug.WriteLine($"[LoadChallenge] Active challenges to show: {activeChallenges.Count}");
 
-                ResetChallengeSlots();
+                foreach (var ch in activeChallenges)
+                {
+                    System.Diagnostics.Debug.WriteLine($"[LoadChallenge]   - Will show: {ch.NameChallenge} (ID: {ch.IdChallenge})");
+                }
 
                 if (activeChallenges.Count >= 1)
                 {
@@ -336,7 +361,7 @@ namespace EcoLife.Views
                     lblChallengeDesc1.Text = activeChallenges[0].DecsChallenge;
                     btnFinishCh1.Tag = activeChallenges[0];
                     btnFinishCh1.Enabled = true;
-                    btnFinishCh1.Text = "Done";
+                    System.Diagnostics.Debug.WriteLine($"[LoadChallenge] Slot 1 loaded: {activeChallenges[0].NameChallenge}");
                 }
 
                 if (activeChallenges.Count >= 2)
@@ -345,7 +370,7 @@ namespace EcoLife.Views
                     lblChallengeDesc2.Text = activeChallenges[1].DecsChallenge;
                     btnFinishCh2.Tag = activeChallenges[1];
                     btnFinishCh2.Enabled = true;
-                    btnFinishCh2.Text = "Done";
+                    System.Diagnostics.Debug.WriteLine($"[LoadChallenge] Slot 2 loaded: {activeChallenges[1].NameChallenge}");
                 }
 
                 if (activeChallenges.Count >= 3)
@@ -354,24 +379,40 @@ namespace EcoLife.Views
                     lblChallengeDesc3.Text = activeChallenges[2].DecsChallenge;
                     btnFinishCh3.Tag = activeChallenges[2];
                     btnFinishCh3.Enabled = true;
-                    btnFinishCh3.Text = "Done";
+                    System.Diagnostics.Debug.WriteLine($"[LoadChallenge] Slot 3 loaded: {activeChallenges[2].NameChallenge}");
                 }
 
-                if (activeChallenges.Count == 0)
+                if (activeChallenges.Count == 0 && allChallenges.Count > 0)
                 {
-                    MessageBox.Show("Semua challenge telah diselesaikan! 🎉", "Info",
-                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(
+                        "Semua challenge hari ini telah diselesaikan 🎉",
+                        "Info",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    );
                 }
+                else if (allChallenges.Count == 0)
+                {
+                    System.Diagnostics.Debug.WriteLine("[LoadChallenge] WARNING: No challenges available for today from database!");
+                    MessageBox.Show(
+                        "Tidak ada challenge untuk hari ini.",
+                        "Info",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    );
+                }
+
+                System.Diagnostics.Debug.WriteLine($"[LoadChallenge] ===== END DEBUG =====");
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error saat load challenge: {ex.Message}", "Error",
+                System.Diagnostics.Debug.WriteLine($"[LoadChallenge] Error: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"[LoadChallenge] StackTrace: {ex.StackTrace}");
+                MessageBox.Show($"Error loading challenges: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                System.Diagnostics.Debug.WriteLine($"LoadChallenge ERROR: {ex.Message}");
             }
         }
 
-        // Reset semua slot challenge ke default
         private void ResetChallengeSlots()
         {
             lblChallengeName1.Text = "Tidak ada challenge";
@@ -396,9 +437,43 @@ namespace EcoLife.Views
         private void LoadHistory()
         {
             lbHistory.Items.Clear();
+            completedChallengeIds.Clear(); // Clear dulu sebelum reload
+
+            try
+            {
+                List<History> histories = historyController.ReadAllHistoryUser();
+
+                foreach (var history in histories)
+                {
+                    string displayText = history.CreatedAt.ToString("dd/MM HH:mm") +
+                                        " - " + history.NameHistory;
+
+                    if (!string.IsNullOrEmpty(history.DecsHistory))
+                    {
+                        displayText += " +" + history.DecsHistory + " pts";
+                    }
+
+                    lbHistory.Items.Add(displayText);
+
+                    // Tambahkan ke completed list
+                    if (history.IdChallenge > 0 && !completedChallengeIds.Contains(history.IdChallenge))
+                    {
+                        completedChallengeIds.Add(history.IdChallenge);
+                    }
+                }
+
+                System.Diagnostics.Debug.WriteLine($"[LoadHistory] Loaded {histories.Count} histories, {completedChallengeIds.Count} completed challenges");
+                System.Diagnostics.Debug.WriteLine($"[LoadHistory] Completed IDs: {string.Join(", ", completedChallengeIds)}");
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"[LoadHistory] Error: {ex.Message}");
+                MessageBox.Show($"Error loading history: {ex.Message}", "Error",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
-        // Proses penyelesaian challenge dan refresh list
+
         private void FinishChallenge(Guna2Button btn, Guna2HtmlLabel name, Guna2HtmlLabel desc)
         {
             if (btn.Tag == null)
@@ -421,56 +496,81 @@ namespace EcoLife.Views
                 return;
             }
 
+            // Simpan old values
             int oldScore = currentUser.TotalScore;
             int oldLevel = GetLevelFromScore(oldScore);
 
-            currentUser.TotalScore += ch.PointChallenge;
-            int newLevel = GetLevelFromScore(currentUser.TotalScore);
+            // Hitung new score
+            int newScore = oldScore + ch.PointChallenge;
+            int newLevel = GetLevelFromScore(newScore);
 
-            bool success = userController.UpdateUserScore(currentUser.IdUser, currentUser.TotalScore);
-
-            if (!success)
+            try
             {
-                MessageBox.Show("Gagal menyimpan skor ke database!", "Error",
+
+                bool success = userController.UpdateUserScore(currentUser.IdUser, newScore);
+
+                if (!success)
+                {
+                    MessageBox.Show("Gagal menyimpan skor ke database!", "Error",
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+
+                using (DbContext context = new DbContext())
+                {
+                    HistoryRepository historyRepo = new HistoryRepository(context);
+                    historyRepo.CreateHistory(currentUser, ch);
+                    System.Diagnostics.Debug.WriteLine($"[FinishChallenge] History saved: {ch.NameChallenge}");
+                }
+
+                if (!completedChallengeIds.Contains(ch.IdChallenge))
+                {
+                    completedChallengeIds.Add(ch.IdChallenge);
+                }
+
+
+                currentUser.TotalScore = newScore;
+                lblScore.Text = newScore.ToString();
+                lblLevel.Text = newLevel.ToString();
+                SetProgressBar(newScore, newLevel);
+
+
+                if (newLevel > oldLevel)
+                {
+                    UpdateBadgeAndTitle(newLevel);
+
+                    MessageBox.Show(
+                        $"🎉 LEVEL UP! 🎉\n\n" +
+                        $"Selamat! Anda naik ke Level {newLevel}!\n" +
+                        $"Badge dan Title baru telah di-unlock!\n\n" +
+                        $"Total Score: {newScore}",
+                        "Level Up!",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show(
+                        $"Selamat! Anda mendapatkan {ch.PointChallenge} poin!\n" +
+                        $"Total Score: {newScore}",
+                        "Challenge Completed",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information);
+                }
+                LoadHistory();
+                LoadChallenge();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}", "Error",
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
-                currentUser.TotalScore = oldScore;
-                return;
+                System.Diagnostics.Debug.WriteLine($"[FinishChallenge] ERROR: {ex.Message}");
             }
-
-            completedChallengeIds.Add(ch.IdChallenge);
-
-            lblScore.Text = currentUser.TotalScore.ToString();
-            lblLevel.Text = newLevel.ToString();
-            SetProgressBar(currentUser.TotalScore, newLevel);
-
-            if (newLevel > oldLevel)
-            {
-                UpdateBadgeAndTitle(newLevel);
-
-                MessageBox.Show(
-                    $"🎉 LEVEL UP! 🎉\n\n" +
-                    $"Selamat! Anda naik ke Level {newLevel}!\n" +
-                    $"Badge dan Title baru telah di-unlock!\n\n" +
-                    $"Total Score: {currentUser.TotalScore}",
-                    "Level Up!",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-            }
-            else
-            {
-                MessageBox.Show(
-                    $"Selamat! Anda mendapatkan {ch.PointChallenge} poin!\n" +
-                    $"Total Score: {currentUser.TotalScore}",
-                    "Challenge Completed",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
-            }
-
-            lbHistory.Items.Insert(0,
-                DateTime.Now.ToString("dd/MM HH:mm") + " - Complete " + ch.NameChallenge + " +" + ch.PointChallenge);
-
-            LoadChallenge();
         }
+
+
+
 
         private void btnFinishCh1_Click(object sender, EventArgs e)
         {

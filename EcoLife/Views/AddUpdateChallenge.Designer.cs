@@ -60,9 +60,10 @@
             this.guna2CustomGradientPanel1.FillColor2 = System.Drawing.Color.Transparent;
             this.guna2CustomGradientPanel1.FillColor3 = System.Drawing.Color.Transparent;
             this.guna2CustomGradientPanel1.FillColor4 = System.Drawing.Color.Transparent;
-            this.guna2CustomGradientPanel1.Location = new System.Drawing.Point(256, 12);
+            this.guna2CustomGradientPanel1.Location = new System.Drawing.Point(384, 18);
+            this.guna2CustomGradientPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
-            this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(300, 426);
+            this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(450, 655);
             this.guna2CustomGradientPanel1.TabIndex = 0;
             // 
             // btnTambah
@@ -72,12 +73,13 @@
             this.btnTambah.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnTambah.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnTambah.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnTambah.FillColor = System.Drawing.Color.DarkSlateGray;
-            this.btnTambah.Font = new System.Drawing.Font("Poppins SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTambah.ForeColor = System.Drawing.Color.White;
-            this.btnTambah.Location = new System.Drawing.Point(73, 261);
+            this.btnTambah.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(75)))), ((int)(((byte)(60)))));
+            this.btnTambah.Font = new System.Drawing.Font("Poppins SemiBold", 9F, System.Drawing.FontStyle.Bold);
+            this.btnTambah.ForeColor = System.Drawing.Color.Aquamarine;
+            this.btnTambah.Location = new System.Drawing.Point(110, 402);
+            this.btnTambah.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnTambah.Name = "btnTambah";
-            this.btnTambah.Size = new System.Drawing.Size(150, 30);
+            this.btnTambah.Size = new System.Drawing.Size(225, 46);
             this.btnTambah.TabIndex = 8;
             this.btnTambah.Text = "Simpan Data";
             this.btnTambah.Click += new System.EventHandler(this.btnTambah_Click);
@@ -94,11 +96,12 @@
             this.txtPointChallenge.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPointChallenge.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtPointChallenge.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPointChallenge.Location = new System.Drawing.Point(40, 208);
+            this.txtPointChallenge.Location = new System.Drawing.Point(60, 320);
+            this.txtPointChallenge.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.txtPointChallenge.Name = "txtPointChallenge";
             this.txtPointChallenge.PlaceholderText = "";
             this.txtPointChallenge.SelectedText = "";
-            this.txtPointChallenge.Size = new System.Drawing.Size(225, 25);
+            this.txtPointChallenge.Size = new System.Drawing.Size(338, 38);
             this.txtPointChallenge.TabIndex = 7;
             // 
             // txtDescChallenge
@@ -113,11 +116,12 @@
             this.txtDescChallenge.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtDescChallenge.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtDescChallenge.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtDescChallenge.Location = new System.Drawing.Point(40, 149);
+            this.txtDescChallenge.Location = new System.Drawing.Point(60, 229);
+            this.txtDescChallenge.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.txtDescChallenge.Name = "txtDescChallenge";
             this.txtDescChallenge.PlaceholderText = "";
             this.txtDescChallenge.SelectedText = "";
-            this.txtDescChallenge.Size = new System.Drawing.Size(225, 25);
+            this.txtDescChallenge.Size = new System.Drawing.Size(338, 38);
             this.txtDescChallenge.TabIndex = 6;
             // 
             // txtNameChallenge
@@ -132,11 +136,12 @@
             this.txtNameChallenge.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtNameChallenge.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtNameChallenge.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtNameChallenge.Location = new System.Drawing.Point(40, 89);
+            this.txtNameChallenge.Location = new System.Drawing.Point(60, 137);
+            this.txtNameChallenge.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.txtNameChallenge.Name = "txtNameChallenge";
             this.txtNameChallenge.PlaceholderText = "";
             this.txtNameChallenge.SelectedText = "";
-            this.txtNameChallenge.Size = new System.Drawing.Size(225, 25);
+            this.txtNameChallenge.Size = new System.Drawing.Size(338, 38);
             this.txtNameChallenge.TabIndex = 5;
             // 
             // guna2HtmlLabel4
@@ -144,9 +149,10 @@
             this.guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel4.Font = new System.Drawing.Font("Poppins SemiBold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel4.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel4.Location = new System.Drawing.Point(40, 191);
+            this.guna2HtmlLabel4.Location = new System.Drawing.Point(60, 294);
+            this.guna2HtmlLabel4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2HtmlLabel4.Name = "guna2HtmlLabel4";
-            this.guna2HtmlLabel4.Size = new System.Drawing.Size(90, 21);
+            this.guna2HtmlLabel4.Size = new System.Drawing.Size(140, 32);
             this.guna2HtmlLabel4.TabIndex = 4;
             this.guna2HtmlLabel4.Text = "Point Challenge";
             // 
@@ -155,9 +161,10 @@
             this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel3.Font = new System.Drawing.Font("Poppins SemiBold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel3.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(40, 131);
+            this.guna2HtmlLabel3.Location = new System.Drawing.Point(60, 202);
+            this.guna2HtmlLabel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            this.guna2HtmlLabel3.Size = new System.Drawing.Size(90, 21);
+            this.guna2HtmlLabel3.Size = new System.Drawing.Size(137, 32);
             this.guna2HtmlLabel3.TabIndex = 3;
             this.guna2HtmlLabel3.Text = "Desc Challenge";
             // 
@@ -166,9 +173,10 @@
             this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel2.Font = new System.Drawing.Font("Poppins SemiBold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel2.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(40, 71);
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(60, 109);
+            this.guna2HtmlLabel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(96, 21);
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(150, 32);
             this.guna2HtmlLabel2.TabIndex = 2;
             this.guna2HtmlLabel2.Text = "Nama Challenge";
             // 
@@ -177,9 +185,10 @@
             this.titleAddUpdateChallenge.BackColor = System.Drawing.Color.Transparent;
             this.titleAddUpdateChallenge.Font = new System.Drawing.Font("Poppins SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleAddUpdateChallenge.ForeColor = System.Drawing.Color.White;
-            this.titleAddUpdateChallenge.Location = new System.Drawing.Point(100, 17);
+            this.titleAddUpdateChallenge.Location = new System.Drawing.Point(150, 26);
+            this.titleAddUpdateChallenge.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.titleAddUpdateChallenge.Name = "titleAddUpdateChallenge";
-            this.titleAddUpdateChallenge.Size = new System.Drawing.Size(103, 25);
+            this.titleAddUpdateChallenge.Size = new System.Drawing.Size(155, 38);
             this.titleAddUpdateChallenge.TabIndex = 1;
             this.titleAddUpdateChallenge.Text = "Add Challenge";
             // 
@@ -191,21 +200,23 @@
             this.btnBackChallenge.ImageOffset = new System.Drawing.Point(0, 0);
             this.btnBackChallenge.ImageRotate = 0F;
             this.btnBackChallenge.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnBackChallenge.Location = new System.Drawing.Point(13, 17);
+            this.btnBackChallenge.Location = new System.Drawing.Point(20, 26);
+            this.btnBackChallenge.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnBackChallenge.Name = "btnBackChallenge";
             this.btnBackChallenge.PressedState.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnBackChallenge.Size = new System.Drawing.Size(25, 25);
+            this.btnBackChallenge.Size = new System.Drawing.Size(38, 38);
             this.btnBackChallenge.TabIndex = 0;
             this.btnBackChallenge.Click += new System.EventHandler(this.btnBackChallenge_Click);
             // 
             // AddUpdateChallenge
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(50)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1200, 692);
             this.Controls.Add(this.guna2CustomGradientPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "AddUpdateChallenge";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddChallenge";

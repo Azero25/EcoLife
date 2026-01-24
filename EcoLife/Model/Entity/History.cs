@@ -24,6 +24,7 @@ namespace EcoLife.Model.Entity
 
         // Relations
         public User User { get; set; }
+        public int IdChallenge { get; set; }
     }
 }
 

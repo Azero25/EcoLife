@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AddUpdateUser));
             this.guna2CustomGradientPanel1 = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.comboRoleUser = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.btnTambahUser = new Guna.UI2.WinForms.Guna2Button();
             this.txtPasswordUser = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtEmailUser = new Guna.UI2.WinForms.Guna2TextBox();
@@ -39,8 +41,6 @@
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.titleAddUpdateUser = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.btnBackUser = new Guna.UI2.WinForms.Guna2ImageButton();
-            this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            this.comboRoleUser = new Guna.UI2.WinForms.Guna2ComboBox();
             this.guna2CustomGradientPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,10 +64,40 @@
             this.guna2CustomGradientPanel1.FillColor2 = System.Drawing.Color.Transparent;
             this.guna2CustomGradientPanel1.FillColor3 = System.Drawing.Color.Transparent;
             this.guna2CustomGradientPanel1.FillColor4 = System.Drawing.Color.Transparent;
-            this.guna2CustomGradientPanel1.Location = new System.Drawing.Point(250, 12);
+            this.guna2CustomGradientPanel1.Location = new System.Drawing.Point(375, 18);
+            this.guna2CustomGradientPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2CustomGradientPanel1.Name = "guna2CustomGradientPanel1";
-            this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(300, 426);
+            this.guna2CustomGradientPanel1.Size = new System.Drawing.Size(450, 655);
             this.guna2CustomGradientPanel1.TabIndex = 1;
+            // 
+            // comboRoleUser
+            // 
+            this.comboRoleUser.BackColor = System.Drawing.Color.Transparent;
+            this.comboRoleUser.BorderRadius = 3;
+            this.comboRoleUser.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.comboRoleUser.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboRoleUser.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.comboRoleUser.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.comboRoleUser.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboRoleUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.comboRoleUser.ItemHeight = 30;
+            this.comboRoleUser.Location = new System.Drawing.Point(60, 417);
+            this.comboRoleUser.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.comboRoleUser.Name = "comboRoleUser";
+            this.comboRoleUser.Size = new System.Drawing.Size(336, 36);
+            this.comboRoleUser.TabIndex = 10;
+            // 
+            // guna2HtmlLabel1
+            // 
+            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Poppins SemiBold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.White;
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(60, 388);
+            this.guna2HtmlLabel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(82, 32);
+            this.guna2HtmlLabel1.TabIndex = 9;
+            this.guna2HtmlLabel1.Text = "Role User";
             // 
             // btnTambahUser
             // 
@@ -76,12 +106,13 @@
             this.btnTambahUser.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnTambahUser.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnTambahUser.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnTambahUser.FillColor = System.Drawing.Color.DarkSlateGray;
-            this.btnTambahUser.Font = new System.Drawing.Font("Poppins SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTambahUser.ForeColor = System.Drawing.Color.White;
-            this.btnTambahUser.Location = new System.Drawing.Point(73, 334);
+            this.btnTambahUser.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(75)))), ((int)(((byte)(60)))));
+            this.btnTambahUser.Font = new System.Drawing.Font("Poppins SemiBold", 9F, System.Drawing.FontStyle.Bold);
+            this.btnTambahUser.ForeColor = System.Drawing.Color.Aquamarine;
+            this.btnTambahUser.Location = new System.Drawing.Point(110, 514);
+            this.btnTambahUser.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnTambahUser.Name = "btnTambahUser";
-            this.btnTambahUser.Size = new System.Drawing.Size(150, 30);
+            this.btnTambahUser.Size = new System.Drawing.Size(225, 46);
             this.btnTambahUser.TabIndex = 8;
             this.btnTambahUser.Text = "Simpan Data";
             this.btnTambahUser.Click += new System.EventHandler(this.btnTambahUser_Click);
@@ -98,11 +129,12 @@
             this.txtPasswordUser.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPasswordUser.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtPasswordUser.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPasswordUser.Location = new System.Drawing.Point(40, 208);
+            this.txtPasswordUser.Location = new System.Drawing.Point(60, 320);
+            this.txtPasswordUser.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.txtPasswordUser.Name = "txtPasswordUser";
             this.txtPasswordUser.PlaceholderText = "";
             this.txtPasswordUser.SelectedText = "";
-            this.txtPasswordUser.Size = new System.Drawing.Size(225, 25);
+            this.txtPasswordUser.Size = new System.Drawing.Size(338, 38);
             this.txtPasswordUser.TabIndex = 7;
             // 
             // txtEmailUser
@@ -117,11 +149,12 @@
             this.txtEmailUser.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtEmailUser.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtEmailUser.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtEmailUser.Location = new System.Drawing.Point(40, 149);
+            this.txtEmailUser.Location = new System.Drawing.Point(60, 229);
+            this.txtEmailUser.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.txtEmailUser.Name = "txtEmailUser";
             this.txtEmailUser.PlaceholderText = "";
             this.txtEmailUser.SelectedText = "";
-            this.txtEmailUser.Size = new System.Drawing.Size(225, 25);
+            this.txtEmailUser.Size = new System.Drawing.Size(338, 38);
             this.txtEmailUser.TabIndex = 6;
             // 
             // txtNameUser
@@ -136,11 +169,12 @@
             this.txtNameUser.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtNameUser.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtNameUser.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtNameUser.Location = new System.Drawing.Point(40, 89);
+            this.txtNameUser.Location = new System.Drawing.Point(60, 137);
+            this.txtNameUser.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.txtNameUser.Name = "txtNameUser";
             this.txtNameUser.PlaceholderText = "";
             this.txtNameUser.SelectedText = "";
-            this.txtNameUser.Size = new System.Drawing.Size(225, 25);
+            this.txtNameUser.Size = new System.Drawing.Size(338, 38);
             this.txtNameUser.TabIndex = 5;
             // 
             // guna2HtmlLabel4
@@ -148,9 +182,10 @@
             this.guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel4.Font = new System.Drawing.Font("Poppins SemiBold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel4.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel4.Location = new System.Drawing.Point(40, 191);
+            this.guna2HtmlLabel4.Location = new System.Drawing.Point(60, 294);
+            this.guna2HtmlLabel4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2HtmlLabel4.Name = "guna2HtmlLabel4";
-            this.guna2HtmlLabel4.Size = new System.Drawing.Size(84, 21);
+            this.guna2HtmlLabel4.Size = new System.Drawing.Size(129, 32);
             this.guna2HtmlLabel4.TabIndex = 4;
             this.guna2HtmlLabel4.Text = "Password User";
             // 
@@ -159,9 +194,10 @@
             this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel3.Font = new System.Drawing.Font("Poppins SemiBold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel3.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(40, 131);
+            this.guna2HtmlLabel3.Location = new System.Drawing.Point(60, 202);
+            this.guna2HtmlLabel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            this.guna2HtmlLabel3.Size = new System.Drawing.Size(62, 21);
+            this.guna2HtmlLabel3.Size = new System.Drawing.Size(94, 32);
             this.guna2HtmlLabel3.TabIndex = 3;
             this.guna2HtmlLabel3.Text = "Email User";
             // 
@@ -170,9 +206,10 @@
             this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel2.Font = new System.Drawing.Font("Poppins SemiBold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel2.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(40, 71);
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(60, 109);
+            this.guna2HtmlLabel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(65, 21);
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(99, 32);
             this.guna2HtmlLabel2.TabIndex = 2;
             this.guna2HtmlLabel2.Text = "Nama User";
             // 
@@ -181,9 +218,10 @@
             this.titleAddUpdateUser.BackColor = System.Drawing.Color.Transparent;
             this.titleAddUpdateUser.Font = new System.Drawing.Font("Poppins SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleAddUpdateUser.ForeColor = System.Drawing.Color.White;
-            this.titleAddUpdateUser.Location = new System.Drawing.Point(120, 17);
+            this.titleAddUpdateUser.Location = new System.Drawing.Point(180, 26);
+            this.titleAddUpdateUser.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.titleAddUpdateUser.Name = "titleAddUpdateUser";
-            this.titleAddUpdateUser.Size = new System.Drawing.Size(62, 25);
+            this.titleAddUpdateUser.Size = new System.Drawing.Size(95, 38);
             this.titleAddUpdateUser.TabIndex = 1;
             this.titleAddUpdateUser.Text = "Add User";
             // 
@@ -195,48 +233,23 @@
             this.btnBackUser.ImageOffset = new System.Drawing.Point(0, 0);
             this.btnBackUser.ImageRotate = 0F;
             this.btnBackUser.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnBackUser.Location = new System.Drawing.Point(13, 17);
+            this.btnBackUser.Location = new System.Drawing.Point(20, 26);
+            this.btnBackUser.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnBackUser.Name = "btnBackUser";
             this.btnBackUser.PressedState.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnBackUser.Size = new System.Drawing.Size(25, 25);
+            this.btnBackUser.Size = new System.Drawing.Size(38, 38);
             this.btnBackUser.TabIndex = 0;
             this.btnBackUser.Click += new System.EventHandler(this.btnBackUser_Click);
             // 
-            // guna2HtmlLabel1
-            // 
-            this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2HtmlLabel1.Font = new System.Drawing.Font("Poppins SemiBold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(40, 252);
-            this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(55, 21);
-            this.guna2HtmlLabel1.TabIndex = 9;
-            this.guna2HtmlLabel1.Text = "Role User";
-            // 
-            // comboRoleUser
-            // 
-            this.comboRoleUser.BackColor = System.Drawing.Color.Transparent;
-            this.comboRoleUser.BorderRadius = 3;
-            this.comboRoleUser.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.comboRoleUser.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboRoleUser.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.comboRoleUser.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.comboRoleUser.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboRoleUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
-            this.comboRoleUser.ItemHeight = 30;
-            this.comboRoleUser.Location = new System.Drawing.Point(40, 271);
-            this.comboRoleUser.Name = "comboRoleUser";
-            this.comboRoleUser.Size = new System.Drawing.Size(225, 36);
-            this.comboRoleUser.TabIndex = 10;
-            // 
             // AddUpdateUser
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(50)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1200, 692);
             this.Controls.Add(this.guna2CustomGradientPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "AddUpdateUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AddUpdateUser";

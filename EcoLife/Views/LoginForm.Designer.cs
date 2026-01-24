@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             this.loginFormPanel = new Guna.UI2.WinForms.Guna2CustomGradientPanel();
+            this.btnBackLogin = new Guna.UI2.WinForms.Guna2ImageButton();
             this.showHidePasswordLog = new Guna.UI2.WinForms.Guna2ImageButton();
             this.linkLogin = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -40,7 +41,6 @@
             this.guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.logo = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.btnBackLogin = new Guna.UI2.WinForms.Guna2ImageButton();
             this.loginFormPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logo)).BeginInit();
             this.SuspendLayout();
@@ -65,10 +65,27 @@
             this.loginFormPanel.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(50)))));
             this.loginFormPanel.FillColor3 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(50)))));
             this.loginFormPanel.FillColor4 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(50)))));
-            this.loginFormPanel.Location = new System.Drawing.Point(255, 12);
+            this.loginFormPanel.Location = new System.Drawing.Point(382, 18);
+            this.loginFormPanel.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.loginFormPanel.Name = "loginFormPanel";
-            this.loginFormPanel.Size = new System.Drawing.Size(300, 426);
+            this.loginFormPanel.Size = new System.Drawing.Size(450, 655);
             this.loginFormPanel.TabIndex = 0;
+            // 
+            // btnBackLogin
+            // 
+            this.btnBackLogin.CheckedState.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnBackLogin.HoverState.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnBackLogin.Image = ((System.Drawing.Image)(resources.GetObject("btnBackLogin.Image")));
+            this.btnBackLogin.ImageOffset = new System.Drawing.Point(0, 0);
+            this.btnBackLogin.ImageRotate = 0F;
+            this.btnBackLogin.ImageSize = new System.Drawing.Size(20, 20);
+            this.btnBackLogin.Location = new System.Drawing.Point(22, 29);
+            this.btnBackLogin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnBackLogin.Name = "btnBackLogin";
+            this.btnBackLogin.PressedState.ImageSize = new System.Drawing.Size(25, 25);
+            this.btnBackLogin.Size = new System.Drawing.Size(38, 38);
+            this.btnBackLogin.TabIndex = 1;
+            this.btnBackLogin.Click += new System.EventHandler(this.btnBackLogin_Click);
             // 
             // showHidePasswordLog
             // 
@@ -78,21 +95,24 @@
             this.showHidePasswordLog.ImageOffset = new System.Drawing.Point(0, 0);
             this.showHidePasswordLog.ImageRotate = 0F;
             this.showHidePasswordLog.ImageSize = new System.Drawing.Size(25, 25);
-            this.showHidePasswordLog.Location = new System.Drawing.Point(260, 260);
+            this.showHidePasswordLog.Location = new System.Drawing.Point(390, 400);
+            this.showHidePasswordLog.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.showHidePasswordLog.Name = "showHidePasswordLog";
             this.showHidePasswordLog.PressedState.ImageSize = new System.Drawing.Size(25, 25);
-            this.showHidePasswordLog.Size = new System.Drawing.Size(25, 25);
+            this.showHidePasswordLog.Size = new System.Drawing.Size(38, 38);
             this.showHidePasswordLog.TabIndex = 1;
             this.showHidePasswordLog.Click += new System.EventHandler(this.showHidePasswordLog_Click);
             // 
             // linkLogin
             // 
+            this.linkLogin.AutoSize = false;
             this.linkLogin.BackColor = System.Drawing.Color.Transparent;
             this.linkLogin.Font = new System.Drawing.Font("Poppins", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.linkLogin.ForeColor = System.Drawing.Color.White;
-            this.linkLogin.Location = new System.Drawing.Point(181, 356);
+            this.linkLogin.Location = new System.Drawing.Point(272, 548);
+            this.linkLogin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.linkLogin.Name = "linkLogin";
-            this.linkLogin.Size = new System.Drawing.Size(49, 21);
+            this.linkLogin.Size = new System.Drawing.Size(116, 32);
             this.linkLogin.TabIndex = 8;
             this.linkLogin.Text = "Register";
             this.linkLogin.Click += new System.EventHandler(this.linkLogin_Click);
@@ -102,9 +122,10 @@
             this.guna2HtmlLabel4.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel4.Font = new System.Drawing.Font("Poppins", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel4.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel4.Location = new System.Drawing.Point(56, 356);
+            this.guna2HtmlLabel4.Location = new System.Drawing.Point(84, 548);
+            this.guna2HtmlLabel4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2HtmlLabel4.Name = "guna2HtmlLabel4";
-            this.guna2HtmlLabel4.Size = new System.Drawing.Size(119, 21);
+            this.guna2HtmlLabel4.Size = new System.Drawing.Size(183, 32);
             this.guna2HtmlLabel4.TabIndex = 7;
             this.guna2HtmlLabel4.Text = "Don\'t have account ?";
             // 
@@ -117,24 +138,27 @@
             this.btnLogin.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
             this.btnLogin.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
             this.btnLogin.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btnLogin.FillColor = System.Drawing.Color.DarkSlateGray;
-            this.btnLogin.Font = new System.Drawing.Font("Poppins SemiBold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(56, 307);
+            this.btnLogin.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(75)))), ((int)(((byte)(60)))));
+            this.btnLogin.Font = new System.Drawing.Font("Poppins SemiBold", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnLogin.ForeColor = System.Drawing.Color.Aquamarine;
+            this.btnLogin.Location = new System.Drawing.Point(84, 472);
+            this.btnLogin.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnLogin.Name = "btnLogin";
-            this.btnLogin.Size = new System.Drawing.Size(180, 30);
+            this.btnLogin.Size = new System.Drawing.Size(270, 46);
             this.btnLogin.TabIndex = 6;
             this.btnLogin.Text = "Login";
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
             // guna2HtmlLabel3
             // 
+            this.guna2HtmlLabel3.AutoSize = false;
             this.guna2HtmlLabel3.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel3.Font = new System.Drawing.Font("Poppins SemiBold", 9F, System.Drawing.FontStyle.Bold);
             this.guna2HtmlLabel3.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel3.Location = new System.Drawing.Point(47, 230);
+            this.guna2HtmlLabel3.Location = new System.Drawing.Point(70, 354);
+            this.guna2HtmlLabel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            this.guna2HtmlLabel3.Size = new System.Drawing.Size(63, 24);
+            this.guna2HtmlLabel3.Size = new System.Drawing.Size(197, 33);
             this.guna2HtmlLabel3.TabIndex = 5;
             this.guna2HtmlLabel3.Text = "Password";
             // 
@@ -150,11 +174,12 @@
             this.txtPasswordLog.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtPasswordLog.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtPasswordLog.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtPasswordLog.Location = new System.Drawing.Point(47, 260);
+            this.txtPasswordLog.Location = new System.Drawing.Point(70, 400);
+            this.txtPasswordLog.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.txtPasswordLog.Name = "txtPasswordLog";
             this.txtPasswordLog.PlaceholderText = "";
             this.txtPasswordLog.SelectedText = "";
-            this.txtPasswordLog.Size = new System.Drawing.Size(207, 25);
+            this.txtPasswordLog.Size = new System.Drawing.Size(310, 38);
             this.txtPasswordLog.TabIndex = 4;
             // 
             // txtEmailLog
@@ -169,32 +194,37 @@
             this.txtEmailLog.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtEmailLog.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtEmailLog.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtEmailLog.Location = new System.Drawing.Point(47, 190);
+            this.txtEmailLog.Location = new System.Drawing.Point(70, 292);
+            this.txtEmailLog.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.txtEmailLog.Name = "txtEmailLog";
             this.txtEmailLog.PlaceholderText = "";
             this.txtEmailLog.SelectedText = "";
-            this.txtEmailLog.Size = new System.Drawing.Size(207, 25);
+            this.txtEmailLog.Size = new System.Drawing.Size(310, 38);
             this.txtEmailLog.TabIndex = 3;
             // 
             // guna2HtmlLabel2
             // 
+            this.guna2HtmlLabel2.AutoSize = false;
             this.guna2HtmlLabel2.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel2.Font = new System.Drawing.Font("Poppins SemiBold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel2.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel2.Location = new System.Drawing.Point(47, 160);
+            this.guna2HtmlLabel2.Location = new System.Drawing.Point(70, 246);
+            this.guna2HtmlLabel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            this.guna2HtmlLabel2.Size = new System.Drawing.Size(36, 24);
+            this.guna2HtmlLabel2.Size = new System.Drawing.Size(255, 33);
             this.guna2HtmlLabel2.TabIndex = 2;
             this.guna2HtmlLabel2.Text = "Email";
             // 
             // guna2HtmlLabel1
             // 
+            this.guna2HtmlLabel1.AutoSize = false;
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
             this.guna2HtmlLabel1.Font = new System.Drawing.Font("Poppins", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.guna2HtmlLabel1.ForeColor = System.Drawing.Color.White;
-            this.guna2HtmlLabel1.Location = new System.Drawing.Point(103, 103);
+            this.guna2HtmlLabel1.Location = new System.Drawing.Point(154, 158);
+            this.guna2HtmlLabel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            this.guna2HtmlLabel1.Size = new System.Drawing.Size(93, 30);
+            this.guna2HtmlLabel1.Size = new System.Drawing.Size(205, 44);
             this.guna2HtmlLabel1.TabIndex = 1;
             this.guna2HtmlLabel1.Text = "Login Page";
             // 
@@ -205,36 +235,23 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.logo.Image = ((System.Drawing.Image)(resources.GetObject("logo.Image")));
             this.logo.ImageRotate = 0F;
-            this.logo.Location = new System.Drawing.Point(103, 19);
+            this.logo.Location = new System.Drawing.Point(154, 29);
+            this.logo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.logo.Name = "logo";
-            this.logo.Size = new System.Drawing.Size(93, 93);
+            this.logo.Size = new System.Drawing.Size(140, 143);
             this.logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.logo.TabIndex = 0;
             this.logo.TabStop = false;
             // 
-            // btnBackLogin
-            // 
-            this.btnBackLogin.CheckedState.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnBackLogin.HoverState.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnBackLogin.Image = ((System.Drawing.Image)(resources.GetObject("btnBackLogin.Image")));
-            this.btnBackLogin.ImageOffset = new System.Drawing.Point(0, 0);
-            this.btnBackLogin.ImageRotate = 0F;
-            this.btnBackLogin.ImageSize = new System.Drawing.Size(20, 20);
-            this.btnBackLogin.Location = new System.Drawing.Point(15, 19);
-            this.btnBackLogin.Name = "btnBackLogin";
-            this.btnBackLogin.PressedState.ImageSize = new System.Drawing.Size(25, 25);
-            this.btnBackLogin.Size = new System.Drawing.Size(25, 25);
-            this.btnBackLogin.TabIndex = 1;
-            this.btnBackLogin.Click += new System.EventHandler(this.btnBackLogin_Click);
-            // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(60)))), ((int)(((byte)(50)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1200, 692);
             this.Controls.Add(this.loginFormPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginForm";
